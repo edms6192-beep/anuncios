@@ -8,7 +8,7 @@ const announcements = [
     id: "PP01",
     category: "Sermón",
     title: "SERMON PARA EL DIA SABADO",
-    person: "Oscar",
+    person: "Hno. Oscar",
     companions: ["Erick Morales", "Arelly Ronquillo"],
     personLabel: "Predica",
     verse:
@@ -20,7 +20,7 @@ const announcements = [
     id: "PP02",
     category: "Limpieza",
     title: "LIMPIEZA DE LA IGLESIA",
-    persons: ["Jose Jumbo", "Carolina Sarango"],
+    persons: ["Hno. Jose Jumbo", "Hno. Carolina Sarango"],
     personLabel: "Nos ayudan las hermanas",
     verse: "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.",
     reference: "Colosenses 3:23",
@@ -30,7 +30,7 @@ const announcements = [
     id: "PP03",
     category: "Flores",
     title: "FLORES PARA LA IGLESIA",
-    person: "Jose Jumbo",
+    person: "Hno. Jose Jumbo",
     personLabel: "Nos ayuda el hermano",
     verse:
       "Considerad los lirios del campo, cómo crecen: no trabajan ni hilan; pero os digo, que ni aun Salomón con toda su gloria se vistió así como uno de ellos.",
