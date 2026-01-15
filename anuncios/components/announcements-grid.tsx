@@ -30,7 +30,7 @@ const announcements = [
     id: "PP03",
     category: "Flores",
     title: "FLORES PARA LA IGLESIA",
-    person: "Pr. Jhony A.",
+    person: "Hna. Rosa León.",
     personLabel: "Nos ayuda el hermano",
     verse:
       "Considerad los lirios del campo, cómo crecen: no trabajan ni hilan; pero os digo, que ni aun Salomón con toda su gloria se vistió así como uno de ellos.",
