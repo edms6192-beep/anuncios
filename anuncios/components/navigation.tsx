@@ -1,7 +1,7 @@
 "use client"
 
 type Tab = "anuncios" | "eventos"
-type SubTab = "esta-semana" | "proxima-semana"
+type SubTab = "esta-semana" | "proxima-semana" | "miercoles-oracion"
 
 interface NavigationProps {
   activeTab: Tab
@@ -61,13 +61,28 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
             >
               Próxima semana
             </button>
+
+            <button
+              onClick={() => onSubTabChange("miercoles-oracion")}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${
+                activeSubTab === "miercoles-oracion"
+                  ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                  : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+              }`}
+            >
+              Miércoles de Oración
+            </button>
           </div>
         )}
 
         {activeTab === "anuncios" && (
           <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
             <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
-              {activeSubTab === "esta-semana" ? "Para este Sabado 10 de Enero del 2026 Nos ayudaran:" : "Anuncios Para elSábado 17 de Enero del 2026"}
+              {activeSubTab === "esta-semana"
+                ? "Para este Sabado 17 de Enero del 2026 Nos ayudaran:"
+                : activeSubTab === "proxima-semana"
+                ? "Anuncios Para elSábado 17 de Enero del 2026"
+                : "Miércoles de Oración - 15 de Enero del 2026"}
             </p>
           </div>
         )}
