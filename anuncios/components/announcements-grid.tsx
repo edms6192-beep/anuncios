@@ -9,7 +9,7 @@ const announcements = [
     category: "Sermón",
     title: "SERMON PARA EL DIA SABADO",
     person: "Hna. Jhony Medina",
-    companions: ["Hno. Carlos Sarango", "Hno. Bolivar Medina"],
+    companions: ["Hno. Carlos Sarango", "Hno. ----------"],
     personLabel: "Predica",
     verse:
       "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.",
