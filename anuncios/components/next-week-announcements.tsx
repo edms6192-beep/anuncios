@@ -8,7 +8,7 @@ const announcements = [
     id: "PP01",
     category: "Sermón",
     title: "SERMON PARA EL DIA SABADO",
-    person: "Hna. Jhony Medina",
+    person: "Hna. ---------",
     companions: ["Hno. ----------", "Hno. ------"],
     personLabel: "Predica",
     verse:
