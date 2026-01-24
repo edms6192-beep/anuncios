@@ -79,10 +79,10 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
             <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
               {activeSubTab === "esta-semana"
-                ? "Para este Sabado 24 de Enero del 2026 Nos ayudaran:"
+                ? "Para este Sabado 31 de Enero del 2026 Nos ayudaran:"
                 : activeSubTab === "proxima-semana"
-                ? "Anuncios Para elSábado 24 de Enero del 2026"
-                : "Miércoles de Oración - 22 de Enero del 2026"}
+                ? "Anuncios Para el Sábado 31 de Enero del 2026"
+                : "Miércoles de Oración - 28 de Enero del 2026"}
             </p>
           </div>
         )}
