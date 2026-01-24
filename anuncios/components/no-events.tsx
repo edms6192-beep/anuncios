@@ -101,7 +101,7 @@ export function NoEvents() {
 
       {/* Footer Ambient Info */}
       <div className="text-[#f5f5f0]/40 text-xs tracking-[0.2em] font-light uppercase mix-blend-plus-lighter">
-        Scroll para ver más eventos
+        eventos
       </div>
 
     </section>
