@@ -30,7 +30,7 @@ const announcements = [
     id: "PP03",
     category: "Flores",
     title: "FLORES PARA LA IGLESIA",
-    person: "Hna. Lady vascones",
+    person: "Hna. Lady Vascones",
     personLabel: "Nos ayuda la hermana",
     verse:
       "Considerad los lirios del campo, cómo crecen: no trabajan ni hilan; pero os digo, que ni aun Salomón con toda su gloria se vistió así como uno de ellos.",
