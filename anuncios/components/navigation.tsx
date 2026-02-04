@@ -18,9 +18,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
         <div className="flex items-center gap-1 text-sm tracking-[0.15em]">
           <button
             onClick={() => onTabChange("anuncios")}
-            className={`px-4 py-2 transition-all duration-300 uppercase ${
-              activeTab === "anuncios" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
-            }`}
+            className={`px-4 py-2 transition-all duration-300 uppercase ${activeTab === "anuncios" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
+              }`}
           >
             Anuncios
           </button>
@@ -29,9 +28,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
 
           <button
             onClick={() => onTabChange("eventos")}
-            className={`px-4 py-2 transition-all duration-300 uppercase ${
-              activeTab === "eventos" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
-            }`}
+            className={`px-4 py-2 transition-all duration-300 uppercase ${activeTab === "eventos" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
+              }`}
           >
             Eventos
           </button>
@@ -42,33 +40,30 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           <div className="flex items-center gap-2 mt-4">
             <button
               onClick={() => onSubTabChange("esta-semana")}
-              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${
-                activeSubTab === "esta-semana"
-                  ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                  : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
-              }`}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "esta-semana"
+                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                }`}
             >
               Esta semana
             </button>
 
             <button
               onClick={() => onSubTabChange("proxima-semana")}
-              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${
-                activeSubTab === "proxima-semana"
-                  ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                  : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
-              }`}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "proxima-semana"
+                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                }`}
             >
               Próxima semana
             </button>
 
             <button
               onClick={() => onSubTabChange("miercoles-oracion")}
-              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${
-                activeSubTab === "miercoles-oracion"
-                  ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                  : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
-              }`}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "miercoles-oracion"
+                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                }`}
             >
               Miércoles de Oración
             </button>
@@ -79,10 +74,10 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
             <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
               {activeSubTab === "esta-semana"
-                ? "Para este Sabado 31 de Enero del 2026 Nos ayudaran:"
+                ? "Para este Sabado 7 de Febrero del 2026 Nos ayudaran:"
                 : activeSubTab === "proxima-semana"
-                ? "Anuncios Para el Sábado 31 de Enero del 2026"
-                : "Miércoles de Oración - 28 de Enero del 2026"}
+                  ? "Anuncios Para el Sábado 7 de Febrero del 2026"
+                  : "Miércoles de Oración - 4 de Febrero del 2026"}
             </p>
           </div>
         )}
