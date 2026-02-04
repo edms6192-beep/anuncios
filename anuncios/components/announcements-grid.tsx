@@ -8,8 +8,8 @@ const announcements = [
     id: "PP01",
     category: "Sermón",
     title: "SERMON PARA EL DIA SABADO",
-    person: "Hno. Jhosua Sarango",
-    companions: ["Hno. Daniel Medina", "Hno. Julito Quituizaca"],
+    person: "Pr. Jhonny Aillo",
+    companions: ["Hna. Jhony Medina", "Hna. Narcisa Cabrera"],
     personLabel: "Predica",
     verse:
       "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.",
@@ -20,7 +20,7 @@ const announcements = [
     id: "PP02",
     category: "Limpieza",
     title: "LIMPIEZA DE LA IGLESIA",
-    persons: ["Fam. Sinche Jaramillo"],
+    persons: ["Fam. Cuenca Alvarez"],
     personLabel: "Nos ayudan l@s herman@s",
     verse: "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.",
     reference: "Colosenses 3:23",
@@ -30,7 +30,7 @@ const announcements = [
     id: "PP03",
     category: "Flores",
     title: "FLORES PARA LA IGLESIA",
-    person: ["Hna. Apolonia e Inés García"],
+    person: ["Hna. Lady Vascones"],
     personLabel: "Nos ayuda herman@",
     verse:
       "Considerad los lirios del campo, cómo crecen: no trabajan ni hilan; pero os digo, que ni aun Salomón con toda su gloria se vistió así como uno de ellos.",
@@ -41,7 +41,7 @@ const announcements = [
     id: "PP04",
     category: "Diezmos y Ofrendas",
     title: "RECOLECCIONES DE DIEZMOS Y OFRENDAS",
-    persons: ["Hna. Camila Cuperan", "Hna. Ideli Jumbo"],
+    persons: ["Hna. Evelyn Ronquillo", "Hna. Anaely Sinche"],
     personLabel: "Nos ayudan l@s herman@s",
     verse: "Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde.",
     reference: "Malaquías 3:10",
@@ -51,7 +51,7 @@ const announcements = [
     id: "PP05",
     category: "Ofrendas de Niños",
     title: "OFRENDAS DE NIÑOS",
-    person: "Hna. Megan Sinche",
+    person: "Hna. Victoria Ronquillo",
     personLabel: "Nos ayuda herman@",
     verse: "Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.",
     reference: "Proverbios 22:6",
@@ -61,7 +61,7 @@ const announcements = [
     id: "PP06",
     category: "Conteo de Diezmo",
     title: "CONTEO DE DIEZMO",
-    person: "Hna. Carolina Sarango",
+    person: "Hna. Narcisa Cabrera",
     personLabel: "Nos ayuda herman@",
     verse: "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.",
     reference: "2 Corintios 9:7",
@@ -71,7 +71,7 @@ const announcements = [
     id: "PP07",
     category: "Apertura del Templo",
     title: "APERTURA DEL TEMPLO",
-    person: "Hna. Narciza Cabrera",
+    person: "Hno. Wilson Cuenca",
     personLabel: "Nos ayuda herman@",
     verse: "Entrad por sus puertas con acción de gracias, por sus atrios con alabanza; alabadle, bendecid su nombre.",
     reference: "Salmos 100:4",
@@ -88,9 +88,8 @@ export function AnnouncementsGrid() {
         <section key={item.id} className="min-h-screen flex flex-col lg:flex-row">
           {/* Left Panel - Text Content */}
           <div
-            className={`w-full lg:w-[55%] bg-[#1a1a1a] flex flex-col justify-between p-10 md:p-16 lg:p-20 xl:p-24 min-h-[50vh] lg:min-h-screen ${
-              index % 2 === 1 ? "lg:order-2" : ""
-            }`}
+            className={`w-full lg:w-[55%] bg-[#1a1a1a] flex flex-col justify-between p-10 md:p-16 lg:p-20 xl:p-24 min-h-[50vh] lg:min-h-screen ${index % 2 === 1 ? "lg:order-2" : ""
+              }`}
           >
             {/* Top - ID */}
             <div className="mb-8">

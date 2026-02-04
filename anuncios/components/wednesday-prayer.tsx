@@ -5,7 +5,7 @@ import { useRef } from "react"
 const wednesdayPrayer = {
   person: "Hno. Julito Quituisaca",
   verse: "7-pm",
-  reference: "Abre la Hna. Wilson Cuenca",
+  reference: "Abre el Hno. Wilson Cuenca",
 }
 
 export function WednesdayPrayer() {
