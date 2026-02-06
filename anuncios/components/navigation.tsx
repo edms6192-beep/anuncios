@@ -77,7 +77,7 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
                 ? "Para este Sabado 7 de Febrero del 2026 Nos ayudaran:"
                 : activeSubTab === "proxima-semana"
                   ? "Anuncios Para el Sábado 7 de Febrero del 2026"
-                  : "Miércoles de Oración - 4 de Febrero del 2026"}
+                  : "Miércoles de Oración - 11 de Febrero del 2026"}
             </p>
           </div>
         )}

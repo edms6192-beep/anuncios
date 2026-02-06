@@ -3,9 +3,9 @@
 import { useRef } from "react"
 
 const wednesdayPrayer = {
-  person: "Hno. Julito Quituisaca",
+  person: "Hna. Rebeca Ordoñes",
   verse: "7-pm",
-  reference: "Abre el Hno. Wilson Cuenca",
+  reference: "Abre el Hna. Carolina Sarango",
 }
 
 export function WednesdayPrayer() {
