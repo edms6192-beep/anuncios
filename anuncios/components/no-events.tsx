@@ -5,44 +5,42 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const EVENTS = [
-  {
-    id: 1,
-    title: "CAMPAMENTO HESED",
-    subtitle: "Te esperamos para una experiencia inolvidable",
-    image: "/campamento.png",
-    badge: "Próximo Evento",
-    badgeColor: "bg-[#3d7a3d]",
-    date: "13 - 16 de Febrero",
-    // time: removed as requested
-    cost: "$15",
-    location: "Campamento 'HESED'",
-    description: "Únete a nosotros en el Campamento Hesed. Un tiempo especial diseñado para fortalecer tu fe y amistades.",
-    detailedInfo: "Costo del retiro: $15. Incluye alimentación y estadía.", // Extra info field
-  },
-  {
-    id: 2,
-    title: "VENTA DE SNACKS",
-    subtitle: "Todos los sábados en la noche - ¡Te esperamos!",
-    image: "/snacks-sale.png",
-    badge: "Anuncio Semanal",
-    badgeColor: "bg-[#d97706]",
-    date: "Cada Sábado",
-    time: "Después del culto joven", // Updated as requested
-    location: "Patio de la Iglesia Central",
-    description: "No te pierdas nuestra venta de snacks semanal. Es la oportunidad perfecta para compartir con amigos y hermanos.",
-  }
-]
+const EVENTS: {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  badge: string;
+  badgeColor: string;
+  date: string;
+  time?: string;
+  cost?: string;
+  location: string;
+  description: string;
+  detailedInfo?: string;
+}[] = [
+    {
+      id: 1,
+      title: "10 DÍAS DE ORACIÓN",
+      subtitle: "El Espíritu Santo y el Tiempo del Fin",
+      image: "/ARTE_BASE_10Dias_es.jpg",
+      badge: "Evento Especial",
+      badgeColor: "bg-[#8b5cf6]",
+      date: "19 - 28 de Febrero",
+      time: "Programación diaria",
+      location: "Iglesia del Valle",
+      description: "Únete a nosotros en un viaje de reavivamiento espiritual, buscando una relación más profunda con el Espíritu Santo e intercediendo por nuestra comunidad.",
+      detailedInfo: "El primer sábado tendremos un programa especial con 10 horas de ayuno y oración. Este material es una invitación a la acción para buscar diariamente al Espíritu Santo.",
+    }
+  ]
 
 export function NoEvents() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  const [selectedEvent, setSelectedEvent] = useState<typeof EVENTS[0] | null>(null) // State for details
   const detailsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Carousel keeps spinning regardless of details view
       nextSlide()
     }, 8000)
 
@@ -59,13 +57,8 @@ export function NoEvents() {
     setCurrentIndex((prev) => (prev === 0 ? EVENTS.length - 1 : prev - 1))
   }
 
-  const handleExplore = () => {
-    // Capture the current event as the selected one
-    setSelectedEvent(EVENTS[currentIndex])
-    // Allow a small delay for state update/render before scrolling if needed, but usually instant
-    setTimeout(() => {
-      detailsRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, 100)
+  const handleScrollDown = () => {
+    detailsRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
   const slideVariants = {
@@ -86,6 +79,21 @@ export function NoEvents() {
   }
 
   const currentEvent = EVENTS[currentIndex]
+
+  if (!currentEvent) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center px-4">
+          <h2 className="text-3xl md:text-5xl font-light text-[#333] tracking-tight mb-4">
+            NO HAY EVENTOS PRÓXIMOS
+          </h2>
+          <p className="text-[#666] tracking-widest uppercase text-sm">
+            Pronto anunciaremos nuevas actividades
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col">
@@ -163,7 +171,7 @@ export function NoEvents() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter mb-6 leading-none drop-shadow-2xl"
+                className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-none drop-shadow-2xl"
               >
                 {currentEvent.title}
               </motion.h2>
@@ -173,31 +181,33 @@ export function NoEvents() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="max-w-3xl mb-12"
+                className="max-w-4xl mb-12"
               >
-                <p className="text-xl md:text-3xl text-white/90 font-light tracking-wide leading-relaxed drop-shadow-lg">
+                <p className="text-lg md:text-2xl text-white/90 font-light tracking-wide leading-relaxed drop-shadow-lg">
                   {currentEvent.subtitle}
                 </p>
               </motion.div>
 
-              {/* Explore Button - Appears on Hover */}
+              {/* Scroll Down Indicator (Replacing Explore Button) */}
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                variants={{
-                  hover: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { duration: 0.3, ease: "easeOut" }
-                  }
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce cursor-pointer z-40"
+                onClick={handleScrollDown}
               >
-                <button
-                  onClick={handleExplore}
-                  className="px-10 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-full text-white font-bold tracking-[0.3em] uppercase hover:bg-white/20 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] cursor-pointer"
+                <span className="text-xs tracking-[0.3em] text-white/70 uppercase">Ver detalles</span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-white/70"
                 >
-                  Explorar
-                </button>
+                  <path d="M12 5v14M19 12l-7 7-7-7" />
+                </svg>
               </motion.div>
 
             </div>
@@ -221,93 +231,96 @@ export function NoEvents() {
         </div>
       </section>
 
-      {/* Details Section - Only visible if an event is selected */}
-      {selectedEvent && (
-        <section ref={detailsRef} className="min-h-[80vh] w-full bg-[#111] flex items-center justify-center py-24 px-4 md:px-12 relative overflow-hidden">
-          {/* Background Details */}
-          <div className="absolute inset-0 bg-[#0a0a0a]">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[128px]" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[128px]" />
-          </div>
+      {/* Details Section - Always visible below */}
+      <section ref={detailsRef} className="min-h-[80vh] w-full bg-[#111] flex items-center justify-center py-24 px-4 md:px-12 relative overflow-hidden">
+        {/* Background Details */}
+        <div className="absolute inset-0 bg-[#0a0a0a]">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[128px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[128px]" />
+        </div>
 
-          <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
 
-            {/* Info Side */}
-            <motion.div
-              key={selectedEvent.id}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }} // Changed to animate to trigger on key change
-              transition={{ duration: 0.6 }}
-              className="space-y-12"
-            >
-              <div>
-                <span className={`inline-block px-3 py-1 rounded-full ${selectedEvent.badgeColor} text-white text-xs font-bold tracking-[0.2em] uppercase mb-6`}>
-                  Información Detallada
-                </span>
-                <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
-                  {selectedEvent.title}
-                </h3>
-                <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-                  {selectedEvent.description}
+          {/* Info Side */}
+          <motion.div
+            key={currentEvent.id}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-12"
+          >
+            <div>
+              <span className={`inline-block px-3 py-1 rounded-full ${currentEvent.badgeColor} text-white text-xs font-bold tracking-[0.2em] uppercase mb-6`}>
+                Información Detallada
+              </span>
+              <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                {currentEvent.title}
+              </h3>
+              <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+                {currentEvent.description}
+              </p>
+              {currentEvent.detailedInfo && (
+                <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light mt-4">
+                  {currentEvent.detailedInfo}
                 </p>
-                {/* Specific Layout for Cost/Details */}
-                {selectedEvent.cost && (
-                  <p className="text-2xl text-emerald-400 font-bold mt-4">
-                    Costo: {selectedEvent.cost}
-                  </p>
+              )}
+              {/* Specific Layout for Cost/Details */}
+              {currentEvent.cost && (
+                <p className="text-2xl text-emerald-400 font-bold mt-4">
+                  Costo: {currentEvent.cost}
+                </p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/10 pt-10">
+              <div className="space-y-4">
+                <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" /> Fecha y Hora
+                </h4>
+                <p className="text-2xl text-white/90 font-light">{currentEvent.date}</p>
+                {currentEvent.time ? (
+                  <p className="text-blue-400 font-mono">{currentEvent.time}</p>
+                ) : (
+                  <p className="text-gray-500 italic text-sm">Horario a confirmar</p>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/10 pt-10">
-                <div className="space-y-4">
-                  <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-blue-500" /> Fecha y Hora
-                  </h4>
-                  <p className="text-2xl text-white/90 font-light">{selectedEvent.date}</p>
-                  {selectedEvent.time ? (
-                    <p className="text-blue-400 font-mono">{selectedEvent.time}</p>
-                  ) : (
-                    <p className="text-gray-500 italic text-sm">Horario a confirmar</p>
-                  )}
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-purple-500" /> Ubicación
-                  </h4>
-                  <p className="text-xl text-white/90 font-light leading-snug">{selectedEvent.location}</p>
-                </div>
+              <div className="space-y-4">
+                <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-purple-500" /> Ubicación
+                </h4>
+                <p className="text-xl text-white/90 font-light leading-snug">{currentEvent.location}</p>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Decor/Map Side */}
-            <motion.div
-              key={selectedEvent.id + "-img"} // Force re-render on change
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="relative h-[400px] lg:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
-            >
-              <Image
-                src={selectedEvent.image}
-                alt="Detalle"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-80" />
+          {/* Decor/Map Side */}
+          <motion.div
+            key={currentEvent.id + "-img"}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative h-[400px] lg:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
+          >
+            <Image
+              src={currentEvent.image}
+              alt="Detalle"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-80" />
 
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
-                  <p className="text-gray-300 text-sm font-light italic">
-                    {selectedEvent.id === 1 ? "¡Reserva tu lugar con tiempo!" : "¡Disfruta y colabora!"}
-                  </p>
-                </div>
+            <div className="absolute bottom-8 left-8 right-8">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
+                <p className="text-gray-300 text-sm font-light italic">
+                  {currentEvent.id === 1 ? "¡Reserva tu lugar con tiempo!" : "¡Disfruta y colabora!"}
+                </p>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
     </div>
   )
 }

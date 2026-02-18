@@ -1,7 +1,7 @@
 "use client"
 
 type Tab = "anuncios" | "eventos"
-type SubTab = "esta-semana" | "proxima-semana" | "miercoles-oracion"
+type SubTab = "esta-semana" | "proxima-semana" | "miercoles-oracion" | "proximos-eventos" | "historial"
 
 interface NavigationProps {
   activeTab: Tab
@@ -70,17 +70,46 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           </div>
         )}
 
-        {activeTab === "anuncios" && (
-          <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
-            <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
-              {activeSubTab === "esta-semana"
-                ? "Para este Sabado 7 de Febrero del 2026 Nos ayudaran:"
-                : activeSubTab === "proxima-semana"
-                  ? "Anuncios Para el Sábado 7 de Febrero del 2026"
-                  : "Miércoles de Oración - 11 de Febrero del 2026"}
-            </p>
+        {/* Sub navegación para eventos */}
+        {activeTab === "eventos" && (
+          <div className="flex items-center gap-2 mt-4">
+            <button
+              onClick={() => onSubTabChange("proximos-eventos")}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "proximos-eventos"
+                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                }`}
+            >
+              Eventos
+            </button>
+
+            <button
+              onClick={() => onSubTabChange("historial")}
+              className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "historial"
+                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
+                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                }`}
+            >
+              Historial de eventos
+            </button>
           </div>
         )}
+
+        <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
+          <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
+            {activeTab === "anuncios" ? (
+              activeSubTab === "esta-semana"
+                ? "Para este Sabado 21 de Febrero del 2026 Nos ayudaran:"
+                : activeSubTab === "proxima-semana"
+                  ? "Anuncios Para el Sábado 21 de Febrero del 2026"
+                  : "Miércoles de Oración - 18 de Febrero del 2026"
+            ) : (
+              activeSubTab === "proximos-eventos"
+                ? "Próximos eventos especiales"
+                : "Historial de eventos pasados"
+            )}
+          </p>
+        </div>
       </div>
 
       <div className="h-px bg-gradient-to-r from-transparent via-[#333] to-transparent" />
