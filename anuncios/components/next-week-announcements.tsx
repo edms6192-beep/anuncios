@@ -12,8 +12,8 @@ const announcements = [
     companions: ["----------", "----------"],
     personLabel: "Predica",
     verse:
-      "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.",
-    reference: "Juan 3:16",
+      "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.",
+    reference: "Romanos 1:16",
     image: "/bibli.jpg",
   },
   {
@@ -22,8 +22,8 @@ const announcements = [
     title: "LIMPIEZA DE LA IGLESIA",
     persons: ["----------"],
     personLabel: "Nos ayudan la Familia",
-    verse: "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.",
-    reference: "Colosenses 3:23",
+    verse: "pero hágase todo decentemente y con orden.",
+    reference: "1 Corintios 14:40",
     image: "/limpieza.jpg",
   },
   {
@@ -33,8 +33,8 @@ const announcements = [
     person: "----------",
     personLabel: "Nos ayuda la hermana",
     verse:
-      "Considerad los lirios del campo, cómo crecen: no trabajan ni hilan; pero os digo, que ni aun Salomón con toda su gloria se vistió así como uno de ellos.",
-    reference: "Mateo 6:28-29",
+      "Sécase la hierba, marchítase la flor; mas la palabra del Dios nuestro permanece para siempre.",
+    reference: "Isaías 40:8",
     image: "/church-altar-flowers-adventist-decoration-lilies.jpg",
   },
   {
@@ -43,8 +43,8 @@ const announcements = [
     title: "RECOLECCIONES DE DIEZMOS Y OFRENDAS",
     persons: ["----------"],
     personLabel: "Nos ayudan los hermanos",
-    verse: "Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde.",
-    reference: "Malaquías 3:10",
+    verse: "Y poderoso es Dios para hacer que abunde en vosotros toda gracia, a fin de que, teniendo siempre en todas las cosas todo lo suficiente, abundéis para toda buena obra;",
+    reference: "2 Corintios 9:8",
     image: "/diezmos.png",
   },
   {
@@ -53,8 +53,8 @@ const announcements = [
     title: "OFRENDAS DE NIÑOS",
     person: "----------",
     personLabel: "Nos ayuda el hermano",
-    verse: "Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.",
-    reference: "Proverbios 22:6",
+    verse: "Viéndolo Jesús, se indignó, y les dijo: Dejad a los niños venir a mí, y no se lo impidáis; porque de los tales es el reino de Dios.",
+    reference: "Marcos 10:14",
     image: "/ninosdiezmo.png",
   },
   {
@@ -63,8 +63,8 @@ const announcements = [
     title: "CONTEO DE DIEZMO",
     person: "----------",
     personLabel: "Nos ayuda el hermano",
-    verse: "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.",
-    reference: "2 Corintios 9:7",
+    verse: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová.",
+    reference: "Levítico 27:30",
     image: "/conteodiezmo.png",
   },
   {
@@ -73,8 +73,8 @@ const announcements = [
     title: "APERTURA DEL TEMPLO",
     person: "----------",
     personLabel: "Nos ayuda el hermana",
-    verse: "Entrad por sus puertas con acción de gracias, por sus atrios con alabanza; alabadle, bendecid su nombre.",
-    reference: "Salmos 100:4",
+    verse: "Yo me alegré con los que me decían: A la casa de Jehová iremos.",
+    reference: "Salmos 122:1",
     image: "/apertura.png",
   },
 ]
