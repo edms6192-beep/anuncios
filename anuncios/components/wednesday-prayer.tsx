@@ -3,7 +3,7 @@
 import { useRef } from "react"
 
 const wednesdayPrayer = {
-  person: "Hno. Fernando Cuenca",
+  person: "Pr. Jhony Allion",
   verse: "7-pm",
   reference: "Abre el Hna. Narcisa Cabrera",
 }
