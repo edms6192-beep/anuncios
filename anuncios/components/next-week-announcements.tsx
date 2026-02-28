@@ -61,7 +61,7 @@ const announcements = [
     id: "PP06",
     category: "Conteo de Diezmo",
     title: "CONTEO DE DIEZMO",
-    person: "Hna. Wilson Cuenca",
+    person: "Hno. Wilson Cuenca",
     personLabel: "Nos ayuda el hermano",
     verse: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová.",
     reference: "Levítico 27:30",
