@@ -3,7 +3,7 @@
 import { useRef } from "react"
 
 const wednesdayPrayer = {
-  person: "Hna. Anaheli Sinche.",
+  person: "Hna. --------",
   verse: "7-pm",
   reference: "Abre el Hno. Jose Jumbo",
 }
@@ -12,7 +12,7 @@ export function WednesdayPrayer() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div ref={containerRef} className="bg-[#EFE6D5] pt-40">
+    <div ref={containerRef} className="bg-[#EFE6D5] pt-[200px] lg:pt-[240px]">
       <section className="min-h-screen flex flex-col lg:flex-row">
         {/* Full Panel - Text Content */}
         <div className="w-full bg-[#EFE6D5] flex flex-col justify-center p-10 md:p-16 lg:p-20 xl:p-24 min-h-screen">

@@ -68,7 +68,7 @@ export function NoEvents() {
 
   if (!currentEvent) {
     return (
-      <div className="min-h-screen bg-[#EFE6D5] flex items-center justify-center">
+      <div className="bg-[#EFE6D5] min-h-screen pt-[200px] lg:pt-[240px] flex flex-col items-center justify-center">
         <div className="text-center px-4">
           <h2 className="text-3xl md:text-5xl font-light text-stone-800 tracking-tight mb-4">
             NO HAY EVENTOS PRÓXIMOS
