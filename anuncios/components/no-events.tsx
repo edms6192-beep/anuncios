@@ -18,21 +18,7 @@ const EVENTS: {
   location: string;
   description: string;
   detailedInfo?: string;
-}[] = [
-    {
-      id: 1,
-      title: "10 DÍAS DE ORACIÓN",
-      subtitle: "El Espíritu Santo y el Tiempo del Fin",
-      image: "/ARTE_BASE_10Dias_es.jpg",
-      badge: "Evento Especial",
-      badgeColor: "bg-[#8b5cf6]",
-      date: "19 - 28 de Febrero",
-      time: "Programación diaria",
-      location: "Iglesia del Valle",
-      description: "Únete a nosotros en un viaje de reavivamiento espiritual, buscando una relación más profunda con el Espíritu Santo e intercediendo por nuestra comunidad.",
-      detailedInfo: "El primer sábado tendremos un programa especial con 10 horas de ayuno y oración. Este material es una invitación a la acción para buscar diariamente al Espíritu Santo.",
-    }
-  ]
+}[] = []
 
 export function NoEvents() {
   const [currentIndex, setCurrentIndex] = useState(0)

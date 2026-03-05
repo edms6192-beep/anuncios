@@ -19,6 +19,14 @@ const EVENTS_BY_MONTH = {
             image: "/snacks-sale.png",
             date: "Cada Sábado",
             description: "Compartimos momentos especiales con amigos y hermanos.",
+        },
+        {
+            id: 3,
+            title: "10 DÍAS DE ORACIÓN",
+            subtitle: "El Espíritu Santo y el Tiempo del Fin",
+            image: "/ARTE_BASE_10Dias_es.jpg",
+            date: "19 - 28 de Febrero",
+            description: "Únete a nosotros en un viaje de reavivamiento espiritual, buscando una relación más profunda con el Espíritu Santo e intercediendo por nuestra comunidad.",
         }
     ]
 }
