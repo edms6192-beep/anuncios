@@ -83,41 +83,41 @@ export function NextWeekAnnouncements() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div ref={containerRef} className="bg-[#1a1a1a] pt-40">
+    <div ref={containerRef} className="bg-[#EFE6D5] pt-40">
       {announcements.map((item, index) => (
         <section key={item.id} className="min-h-screen flex flex-col lg:flex-row">
           {/* Left Panel - Text Content */}
           <div
-            className={`w-full lg:w-[55%] bg-[#1a1a1a] flex flex-col justify-between p-10 md:p-16 lg:p-20 xl:p-24 min-h-[50vh] lg:min-h-screen ${index % 2 === 1 ? "lg:order-2" : ""
+            className={`w-full lg:w-[55%] bg-[#EFE6D5] flex flex-col justify-between p-10 md:p-16 lg:p-20 xl:p-24 min-h-[50vh] lg:min-h-screen ${index % 2 === 1 ? "lg:order-2" : ""
               }`}
           >
             {/* Top - ID */}
             <div className="mb-8">
-              <span className="text-sm md:text-base tracking-[0.3em] text-[#555]">{item.id}</span>
+              <span className="text-sm md:text-base tracking-[0.3em] text-stone-400 font-medium">{item.id}</span>
             </div>
 
             {/* Center - Main Content */}
             <div className="flex-1 flex flex-col justify-center">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-[#f5f5f0] tracking-tight leading-[0.95] mb-10">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-stone-800 tracking-tight leading-[0.95] mb-10">
                 {item.title}
               </h2>
 
               {item.category === "Sermón" ? (
                 <div className="space-y-8">
                   <div>
-                    <span className="text-xs md:text-sm tracking-[0.3em] text-[#666] uppercase block mb-3">
+                    <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                       {item.personLabel}
                     </span>
-                    <p className="text-2xl md:text-3xl lg:text-4xl text-[#f5f5f0]/90 font-light">{item.person}</p>
+                    <p className="text-2xl md:text-3xl lg:text-4xl text-emerald-700 font-bold tracking-wide">{item.person}</p>
                   </div>
                   {item.companions && item.companions.length > 0 && (
                     <div>
-                      <span className="text-xs md:text-sm tracking-[0.3em] text-[#666] uppercase block mb-3">
+                      <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                         Acompañantes
                       </span>
                       <div className="flex flex-wrap gap-x-8 gap-y-2">
                         {item.companions.map((companion, i) => (
-                          <p key={i} className="text-xl md:text-2xl lg:text-3xl text-[#f5f5f0]/70 font-light">
+                          <p key={i} className="text-xl md:text-2xl lg:text-3xl text-emerald-700 font-bold tracking-wide">
                             {companion}
                           </p>
                         ))}
@@ -127,12 +127,12 @@ export function NextWeekAnnouncements() {
                 </div>
               ) : item.persons ? (
                 <div>
-                  <span className="text-xs md:text-sm tracking-[0.3em] text-[#666] uppercase block mb-3">
+                  <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                     {item.personLabel}
                   </span>
                   <div className="flex flex-wrap gap-x-8 gap-y-2">
                     {item.persons.map((person, i) => (
-                      <p key={i} className="text-2xl md:text-3xl lg:text-4xl text-[#f5f5f0]/90 font-light">
+                      <p key={i} className="text-2xl md:text-3xl lg:text-4xl text-emerald-700 font-bold tracking-wide">
                         {person}
                       </p>
                     ))}
@@ -140,22 +140,22 @@ export function NextWeekAnnouncements() {
                 </div>
               ) : (
                 <div>
-                  <span className="text-xs md:text-sm tracking-[0.3em] text-[#666] uppercase block mb-3">
+                  <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                     {item.personLabel}
                   </span>
-                  <p className="text-2xl md:text-3xl lg:text-4xl text-[#f5f5f0]/90 font-light">{item.person}</p>
+                  <p className="text-2xl md:text-3xl lg:text-4xl text-emerald-700 font-bold tracking-wide">{item.person}</p>
                 </div>
               )}
 
-              <div className="mt-12 lg:mt-16 pt-8 border-t border-[#333] max-w-lg">
-                <p className="text-base md:text-lg text-[#999] leading-relaxed italic">"{item.verse}"</p>
-                <p className="text-xs md:text-sm tracking-[0.25em] text-[#666] mt-4 uppercase">— {item.reference}</p>
+              <div className="mt-12 lg:mt-16 pt-8 border-t border-[#E3D5C1] max-w-lg">
+                <p className="text-base md:text-lg text-[#8C8374] leading-relaxed italic">"{item.verse}"</p>
+                <p className="text-xs md:text-sm tracking-[0.25em] text-[#A69C8B] mt-4 uppercase font-medium">— {item.reference}</p>
               </div>
             </div>
 
             {/* Bottom - Category */}
             <div className="mt-8">
-              <span className="text-xs md:text-sm tracking-[0.3em] text-[#555] uppercase">{item.category}</span>
+              <span className="text-xs md:text-sm tracking-[0.3em] text-stone-400 uppercase font-medium">{item.category}</span>
             </div>
           </div>
 
@@ -181,7 +181,7 @@ export function NextWeekAnnouncements() {
           <a
             key={item.id}
             href={`#${item.id}`}
-            className="w-3 h-3 rounded-full bg-[#f5f5f0]/30 hover:bg-[#f5f5f0] transition-colors duration-300"
+            className="w-3 h-3 rounded-full bg-stone-300 hover:bg-emerald-600 transition-colors duration-300"
             aria-label={`Ir a ${item.title}`}
           />
         ))}
@@ -189,15 +189,15 @@ export function NextWeekAnnouncements() {
 
       {/* Scroll Indicator */}
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3 animate-bounce">
-        <span className="text-xs tracking-[0.3em] text-[#555] uppercase">Scroll</span>
+        <span className="text-xs tracking-[0.3em] text-stone-400 uppercase font-medium">Scroll</span>
         <svg
           width="20"
           height="20"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1"
-          className="text-[#555]"
+          strokeWidth="1.5"
+          className="text-stone-400"
         >
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>

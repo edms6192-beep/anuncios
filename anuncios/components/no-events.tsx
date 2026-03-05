@@ -68,12 +68,12 @@ export function NoEvents() {
 
   if (!currentEvent) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-[#EFE6D5] flex items-center justify-center">
         <div className="text-center px-4">
-          <h2 className="text-3xl md:text-5xl font-light text-[#333] tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-light text-stone-800 tracking-tight mb-4">
             NO HAY EVENTOS PRÓXIMOS
           </h2>
-          <p className="text-[#666] tracking-widest uppercase text-sm">
+          <p className="text-stone-500 tracking-widest uppercase text-sm font-medium">
             Pronto anunciaremos nuevas actividades
           </p>
         </div>
@@ -84,26 +84,26 @@ export function NoEvents() {
   return (
     <div className="flex flex-col">
       {/* Full Screen Carousel Section */}
-      <section className="relative h-screen w-full overflow-hidden bg-black">
+      <section className="relative h-screen w-full overflow-hidden bg-[#EFE6D5]">
 
         {/* Navigation Buttons */}
         <div className="absolute inset-y-0 left-0 z-30 flex items-center px-4 md:px-8 pointer-events-none">
           <button
             onClick={prevSlide}
-            className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/40 transition-all duration-300 group pointer-events-auto"
+            className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FAF7F2]/80 backdrop-blur-md border border-[#E3D5C1] flex items-center justify-center hover:bg-[#FAF7F2] transition-all duration-300 group pointer-events-auto shadow-sm"
             aria-label="Anterior evento"
           >
-            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white transition-colors" />
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-stone-600 group-hover:text-emerald-700 transition-colors" />
           </button>
         </div>
 
         <div className="absolute inset-y-0 right-0 z-30 flex items-center px-4 md:px-8 pointer-events-none">
           <button
             onClick={nextSlide}
-            className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/40 transition-all duration-300 group pointer-events-auto"
+            className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FAF7F2]/80 backdrop-blur-md border border-[#E3D5C1] flex items-center justify-center hover:bg-[#FAF7F2] transition-all duration-300 group pointer-events-auto shadow-sm"
             aria-label="Siguiente evento"
           >
-            <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white transition-colors" />
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-stone-600 group-hover:text-emerald-700 transition-colors" />
           </button>
         </div>
 
@@ -124,16 +124,16 @@ export function NoEvents() {
             className="absolute inset-0 w-full h-full"
           >
             {/* Full Screen Image */}
-            <div className="absolute inset-0 bg-black">
+            <div className="absolute inset-0 bg-[#EFE6D5]">
               <Image
                 src={currentEvent.image}
                 alt={currentEvent.title}
                 fill
-                className="object-cover opacity-60"
+                className="object-cover opacity-20"
                 priority={true}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#EFE6D5] via-[#EFE6D5]/70 to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#EFE6D5]/80 via-transparent to-[#EFE6D5]/80" />
             </div>
 
             {/* Content */}
@@ -157,7 +157,7 @@ export function NoEvents() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-none drop-shadow-2xl"
+                className="text-4xl md:text-6xl lg:text-8xl font-black text-stone-800 tracking-tighter mb-6 leading-none"
               >
                 {currentEvent.title}
               </motion.h2>
@@ -169,7 +169,7 @@ export function NoEvents() {
                 transition={{ delay: 0.4 }}
                 className="max-w-4xl mb-12"
               >
-                <p className="text-lg md:text-2xl text-white/90 font-light tracking-wide leading-relaxed drop-shadow-lg">
+                <p className="text-lg md:text-2xl text-stone-600 font-light tracking-wide leading-relaxed">
                   {currentEvent.subtitle}
                 </p>
               </motion.div>
@@ -182,7 +182,7 @@ export function NoEvents() {
                 className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce cursor-pointer z-40"
                 onClick={handleScrollDown}
               >
-                <span className="text-xs tracking-[0.3em] text-white/70 uppercase">Ver detalles</span>
+                <span className="text-xs tracking-[0.3em] text-stone-500 uppercase font-medium">Ver detalles</span>
                 <svg
                   width="24"
                   height="24"
@@ -190,7 +190,7 @@ export function NoEvents() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="text-white/70"
+                  className="text-stone-500"
                 >
                   <path d="M12 5v14M19 12l-7 7-7-7" />
                 </svg>
@@ -209,7 +209,7 @@ export function NoEvents() {
                 setDirection(idx > currentIndex ? 1 : -1)
                 setCurrentIndex(idx)
               }}
-              className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentIndex ? "w-16 bg-white" : "w-4 bg-white/30 hover:bg-white/50"
+              className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentIndex ? "w-16 bg-emerald-700" : "w-4 bg-stone-300 hover:bg-stone-400"
                 }`}
               aria-label={`Ir a diapositiva ${idx + 1}`}
             />
@@ -218,11 +218,11 @@ export function NoEvents() {
       </section>
 
       {/* Details Section - Always visible below */}
-      <section ref={detailsRef} className="min-h-[80vh] w-full bg-[#111] flex items-center justify-center py-24 px-4 md:px-12 relative overflow-hidden">
+      <section ref={detailsRef} className="min-h-[80vh] w-full bg-[#EFE6D5] flex items-center justify-center py-24 px-4 md:px-12 relative overflow-hidden border-t border-[#E3D5C1]">
         {/* Background Details */}
-        <div className="absolute inset-0 bg-[#0a0a0a]">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[128px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[128px]" />
+        <div className="absolute inset-0 bg-[#EFE6D5]">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[128px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[128px]" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -239,43 +239,43 @@ export function NoEvents() {
               <span className={`inline-block px-3 py-1 rounded-full ${currentEvent.badgeColor} text-white text-xs font-bold tracking-[0.2em] uppercase mb-6`}>
                 Información Detallada
               </span>
-              <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+              <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold text-stone-800 leading-tight mb-8">
                 {currentEvent.title}
               </h3>
-              <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+              <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-light">
                 {currentEvent.description}
               </p>
               {currentEvent.detailedInfo && (
-                <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light mt-4">
+                <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-light mt-4">
                   {currentEvent.detailedInfo}
                 </p>
               )}
               {/* Specific Layout for Cost/Details */}
               {currentEvent.cost && (
-                <p className="text-2xl text-emerald-400 font-bold mt-4">
+                <p className="text-2xl text-emerald-700 font-bold mt-4">
                   Costo: {currentEvent.cost}
                 </p>
               )}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/10 pt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-stone-200 pt-10">
               <div className="space-y-4">
-                <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" /> Fecha y Hora
+                <h4 className="text-stone-500 font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" /> Fecha y Hora
                 </h4>
-                <p className="text-2xl text-white/90 font-light">{currentEvent.date}</p>
+                <p className="text-2xl text-stone-800 font-medium">{currentEvent.date}</p>
                 {currentEvent.time ? (
-                  <p className="text-blue-400 font-mono">{currentEvent.time}</p>
+                  <p className="text-emerald-700 font-mono font-medium">{currentEvent.time}</p>
                 ) : (
-                  <p className="text-gray-500 italic text-sm">Horario a confirmar</p>
+                  <p className="text-stone-400 italic text-sm">Horario a confirmar</p>
                 )}
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-white font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-purple-500" /> Ubicación
+                <h4 className="text-stone-500 font-medium tracking-[0.2em] uppercase text-sm flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" /> Ubicación
                 </h4>
-                <p className="text-xl text-white/90 font-light leading-snug">{currentEvent.location}</p>
+                <p className="text-xl text-stone-800 font-medium leading-snug">{currentEvent.location}</p>
               </div>
             </div>
           </motion.div>
@@ -286,19 +286,19 @@ export function NoEvents() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] lg:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
+            className="relative h-[400px] lg:h-[600px] w-full rounded-3xl overflow-hidden shadow-xl border border-[#E3D5C1] group"
           >
             <Image
               src={currentEvent.image}
               alt="Detalle"
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#EFE6D5]/90 via-transparent to-transparent opacity-80" />
 
             <div className="absolute bottom-8 left-8 right-8">
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
-                <p className="text-gray-300 text-sm font-light italic">
+              <div className="bg-[#FAF7F2]/90 backdrop-blur-md border border-[#E3D5C1] p-6 rounded-2xl shadow-sm">
+                <p className="text-stone-700 text-sm font-medium italic text-center">
                   {currentEvent.id === 1 ? "¡Reserva tu lugar con tiempo!" : "¡Disfruta y colabora!"}
                 </p>
               </div>

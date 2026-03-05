@@ -33,16 +33,16 @@ const EVENTS_BY_MONTH = {
 
 export function EventsHistory() {
     return (
-        <div className="bg-[#1a1a1a] min-h-screen pt-56 px-4 md:px-8 lg:px-16 pb-20">
+        <div className="bg-[#EFE6D5] min-h-screen pt-56 px-4 md:px-8 lg:px-16 pb-20">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl md:text-5xl font-light text-[#f5f5f0] mb-16 tracking-tight text-center">
+                <h2 className="text-3xl md:text-5xl font-light text-stone-800 mb-16 tracking-tight text-center">
                     HISTORIAL DE EVENTOS
                 </h2>
 
                 <div className="space-y-20">
                     {Object.entries(EVENTS_BY_MONTH).map(([month, events]) => (
                         <div key={month}>
-                            <h3 className="text-2xl md:text-3xl font-light text-[#f5f5f0] mb-8 pb-4 border-b border-[#333] tracking-wide uppercase">
+                            <h3 className="text-2xl md:text-3xl font-light text-stone-700 mb-8 pb-4 border-b border-[#E3D5C1] tracking-wide uppercase">
                                 {month}
                             </h3>
 
@@ -50,7 +50,7 @@ export function EventsHistory() {
                                 {events.map((event) => (
                                     <div
                                         key={event.id}
-                                        className="group relative bg-[#222] rounded-2xl overflow-hidden border border-[#333] hover:border-[#555] transition-all duration-300 flex flex-col"
+                                        className="group relative bg-[#FAF7F2] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-[#E3D5C1] hover:border-emerald-500/30 transition-all duration-300 flex flex-col"
                                     >
                                         {/* Image Container */}
                                         <div className="relative h-64 w-full overflow-hidden">
@@ -60,29 +60,29 @@ export function EventsHistory() {
                                                 fill
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#222] to-transparent opacity-60" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60" />
                                         </div>
 
                                         {/* Content */}
                                         <div className="p-6 flex-1 flex flex-col">
                                             <div className="mb-4">
-                                                <span className="text-xs tracking-[0.2em] text-[#888] uppercase block mb-2">
+                                                <span className="text-xs tracking-[0.2em] text-stone-400 uppercase block mb-2 font-medium">
                                                     {event.date}
                                                 </span>
-                                                <h3 className="text-xl md:text-2xl font-bold text-[#f5f5f0] mb-1">
+                                                <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-1">
                                                     {event.title}
                                                 </h3>
-                                                <p className="text-sm text-[#ddd] font-light italic">
+                                                <p className="text-sm text-stone-500 font-light italic">
                                                     {event.subtitle}
                                                 </p>
                                             </div>
 
-                                            <p className="text-[#999] text-sm leading-relaxed mb-6 flex-1">
+                                            <p className="text-stone-600 text-sm leading-relaxed mb-6 flex-1">
                                                 {event.description}
                                             </p>
 
                                             <div className="mt-auto">
-                                                <span className="inline-block px-3 py-1 text-[10px] tracking-[0.2em] uppercase border border-[#444] rounded-full text-[#666] group-hover:text-[#f5f5f0] group-hover:border-[#f5f5f0] transition-colors duration-300">
+                                                <span className="inline-block px-3 py-1 text-[10px] tracking-[0.2em] uppercase border border-[#E3D5C1] rounded-full text-[#A69C8B] group-hover:text-emerald-700 group-hover:border-emerald-200 group-hover:bg-emerald-50 transition-colors duration-300 font-medium">
                                                     Finalizado
                                                 </span>
                                             </div>

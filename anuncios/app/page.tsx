@@ -41,7 +41,7 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-[#1a1a1a]">
+    <main className="bg-[#EFE6D5] min-h-screen">
       <Navigation
         activeTab={activeTab}
         onTabChange={handleTabChange}

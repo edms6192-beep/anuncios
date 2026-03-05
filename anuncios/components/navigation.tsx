@@ -12,23 +12,23 @@ interface NavigationProps {
 
 export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChange }: NavigationProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1a]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/90 backdrop-blur-md">
       <div className="flex flex-col items-center justify-center pt-6 pb-4">
         {/* Navegación principal */}
         <div className="flex items-center gap-1 text-sm tracking-[0.15em]">
           <button
             onClick={() => onTabChange("anuncios")}
-            className={`px-4 py-2 transition-all duration-300 uppercase ${activeTab === "anuncios" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
+            className={`px-4 py-2 transition-all duration-300 uppercase font-medium ${activeTab === "anuncios" ? "text-stone-800" : "text-stone-400 hover:text-stone-600"
               }`}
           >
             Anuncios
           </button>
 
-          <span className="text-[#444]">|</span>
+          <span className="text-stone-300">|</span>
 
           <button
             onClick={() => onTabChange("eventos")}
-            className={`px-4 py-2 transition-all duration-300 uppercase ${activeTab === "eventos" ? "text-[#f5f5f0]" : "text-[#666] hover:text-[#999]"
+            className={`px-4 py-2 transition-all duration-300 uppercase font-medium ${activeTab === "eventos" ? "text-stone-800" : "text-stone-400 hover:text-stone-600"
               }`}
           >
             Eventos
@@ -37,12 +37,12 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
 
         {/* Sub navegación para anuncios */}
         {activeTab === "anuncios" && (
-          <div className="flex items-center gap-2 mt-4">
+          <div className="flex flex-wrap justify-center items-center gap-2 mt-4">
             <button
               onClick={() => onSubTabChange("esta-semana")}
               className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "esta-semana"
-                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                ? "text-white bg-emerald-700 border-emerald-700 font-medium"
+                : "text-stone-500 border-stone-200 hover:text-stone-700 hover:border-stone-300"
                 }`}
             >
               Esta semana
@@ -51,8 +51,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
             <button
               onClick={() => onSubTabChange("proxima-semana")}
               className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "proxima-semana"
-                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                ? "text-white bg-emerald-700 border-emerald-700 font-medium"
+                : "text-stone-500 border-stone-200 hover:text-stone-700 hover:border-stone-300"
                 }`}
             >
               Próxima semana
@@ -61,8 +61,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
             <button
               onClick={() => onSubTabChange("miercoles-oracion")}
               className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "miercoles-oracion"
-                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                ? "text-white bg-emerald-700 border-emerald-700 font-medium"
+                : "text-stone-500 border-stone-200 hover:text-stone-700 hover:border-stone-300"
                 }`}
             >
               Miércoles de Oración
@@ -72,12 +72,12 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
 
         {/* Sub navegación para eventos */}
         {activeTab === "eventos" && (
-          <div className="flex items-center gap-2 mt-4">
+          <div className="flex flex-wrap justify-center items-center gap-2 mt-4">
             <button
               onClick={() => onSubTabChange("proximos-eventos")}
               className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "proximos-eventos"
-                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                ? "text-white bg-emerald-700 border-emerald-700 font-medium"
+                : "text-stone-500 border-stone-200 hover:text-stone-700 hover:border-stone-300"
                 }`}
             >
               Eventos
@@ -86,8 +86,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
             <button
               onClick={() => onSubTabChange("historial")}
               className={`px-4 py-2 text-xs tracking-[0.2em] transition-all duration-300 rounded-full border ${activeSubTab === "historial"
-                ? "text-[#1a1a1a] bg-[#f5f5f0] border-[#f5f5f0]"
-                : "text-[#666] border-[#333] hover:text-[#999] hover:border-[#555]"
+                ? "text-white bg-emerald-700 border-emerald-700 font-medium"
+                : "text-stone-500 border-stone-200 hover:text-stone-700 hover:border-stone-300"
                 }`}
             >
               Historial de eventos
@@ -95,8 +95,8 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           </div>
         )}
 
-        <div className="mt-4 px-6 py-2 border border-[#333] rounded-full">
-          <p className="text-xs md:text-sm tracking-[0.3em] text-[#888] uppercase">
+        <div className="mt-6 px-6 py-2 border border-[#E3D5C1] rounded-full bg-[#FAF7F2] shadow-sm">
+          <p className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase font-medium">
             {activeTab === "anuncios" ? (
               activeSubTab === "esta-semana"
                 ? "Para este Sabado 21 de Febrero del 2026 Nos ayudaran:"
@@ -112,7 +112,7 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
         </div>
       </div>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#333] to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#E3D5C1] to-transparent" />
     </nav>
   )
 }
