@@ -114,14 +114,14 @@ export function NextWeekAnnouncements() {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Sermón": return "text-blue-800"
+      case "Sermón": return "text-indigo-900"
       case "Limpieza":
-      case "Apertura del Templo": return "text-emerald-700"
-      case "Flores":
+      case "Apertura del Templo": return "text-emerald-900"
+      case "Flores": return "text-rose-900"
       case "Diezmos y Ofrendas":
       case "Ofrendas de Niños":
-      case "Conteo de Diezmo": return "text-orange-700"
-      default: return "text-emerald-700"
+      case "Conteo de Diezmo": return "text-amber-900"
+      default: return "text-stone-800"
     }
   }
 
@@ -139,17 +139,17 @@ export function NextWeekAnnouncements() {
   }
 
   return (
-    <div ref={containerRef} className="bg-[#EFE6D5] pt-[200px] lg:pt-[240px]">
+    <div ref={containerRef} className="bg-[#EFE6D5] pt-[280px] md:pt-[240px] lg:pt-[240px]">
       {/* Botón Superior para ver resumen */}
-      <div className="container mx-auto px-6 mb-8 mt-4 flex justify-start">
+      <div className="container mx-auto px-6 mb-12 mt-6 flex justify-start">
         <button
           onClick={() => setShowSummary(true)}
-          className="group relative px-4 py-2 bg-white border border-[#E3D5C1] rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2 overflow-hidden"
+          className="group relative px-6 py-3 bg-white border border-[#E3D5C1] rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-3 overflow-hidden"
         >
           <div className="absolute inset-0 bg-emerald-50 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-          <ClipboardList className="w-4 h-4 text-emerald-700 relative z-10" />
-          <span className="text-[11px] md:text-xs font-bold tracking-[0.1em] text-stone-800 uppercase relative z-10">
-            Ver Resumen de Privilegios
+          <ClipboardList className="w-5 h-5 text-emerald-700 relative z-10" />
+          <span className="text-sm md:text-base font-bold tracking-[0.15em] text-stone-800 uppercase relative z-10">
+            Resumen
           </span>
         </button>
       </div>
@@ -232,13 +232,9 @@ export function NextWeekAnnouncements() {
                             </p>
                           ))}
                         </div>
-                      ) : item.persons ? (
-                        <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.persons.join(", ")}
-                        </p>
                       ) : (
                         <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.person}
+                          {item.persons ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
                         </p>
                       )}
                     </div>
@@ -333,7 +329,7 @@ export function NextWeekAnnouncements() {
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className={`text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide ${getCategoryColor(item.category)}`}
                   >
-                    {item.person}
+                    {Array.isArray(item.person) ? item.person.join(", ") : item.person}
                   </motion.p>
                 </div>
               )}
