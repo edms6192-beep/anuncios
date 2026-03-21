@@ -99,10 +99,10 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           <p className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase font-medium">
             {activeTab === "anuncios" ? (
               activeSubTab === "esta-semana"
-                ? "Para este Sabado 14 de Marzo del 2026 Nos ayudaran:"
+                ? "Para este Sabado 21 de Marzo del 2026 Nos ayudaran:"
                 : activeSubTab === "proxima-semana"
-                  ? "Anuncios Para el Sábado 14 de Marzo del 2026"
-                  : "Miércoles de Oración - 18 de Marzo del 2026"
+                  ? "Anuncios Para el Sábado 21 de Marzo del 2026"
+                  : "Miércoles de Oración - 25 de Marzo del 2026"
             ) : (
               activeSubTab === "proximos-eventos"
                 ? "Próximos eventos especiales"
