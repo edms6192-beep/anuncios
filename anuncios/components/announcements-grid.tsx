@@ -26,7 +26,7 @@ export function AnnouncementsGrid({ announcements }: AnnouncementsGridProps) {
         if (item.companions && item.companions.length > 0) {
           item.companions.forEach(c => textToCopy += `   • ${c}\n`);
         }
-      } else if (item.persons) {
+      } else if (item.persons && item.persons.length > 0) {
         textToCopy += `   • ${item.persons.join(", ")}\n`;
       } else {
         textToCopy += `   • ${item.person}\n`;
@@ -164,7 +164,7 @@ export function AnnouncementsGrid({ announcements }: AnnouncementsGridProps) {
                         </div>
                       ) : (
                         <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.persons ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
+                          {item.persons && item.persons.length > 0 ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
                         </p>
                       )}
                     </div>
@@ -231,7 +231,7 @@ export function AnnouncementsGrid({ announcements }: AnnouncementsGridProps) {
                     </div>
                   )}
                 </div>
-              ) : item.persons ? (
+              ) : item.persons && item.persons.length > 0 ? (
                 <div>
                   <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                     {item.personLabel}

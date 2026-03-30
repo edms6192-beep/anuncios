@@ -29,11 +29,26 @@ export async function fetchAnnouncementsFromSheet(url: string = DEFAULT_URL): Pr
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          const data = results.data.map((row: any) => ({
-            ...row,
-            companions: row.companions ? row.companions.split(',').map((s: string) => s.trim()) : [],
-            persons: row.persons ? row.persons.split(',').map((s: string) => s.trim()) : [],
-          }));
+          const data = results.data.map((row: any) => {
+            // Handle companions
+            const companions = row.companions ? row.companions.split(',').map((s: string) => s.trim()).filter(Boolean) : [];
+            
+            // Handle persons (plural) - if it exists in CSV
+            let persons = row.persons ? row.persons.split(',').map((s: string) => s.trim()).filter(Boolean) : [];
+            
+            // Handle person (singular) - if persons is empty but person has value
+            if (persons.length === 0 && row.person) {
+              persons = row.person.split(',').map((s: string) => s.trim()).filter(Boolean);
+            }
+
+            return {
+              ...row,
+              companions,
+              persons,
+              // Fallback for components that still use 'person' singular property
+              person: Array.isArray(persons) && persons.length > 0 ? persons[0] : (row.person || ""),
+            };
+          });
           resolve(data as Announcement[]);
         },
         error: (error: any) => {
