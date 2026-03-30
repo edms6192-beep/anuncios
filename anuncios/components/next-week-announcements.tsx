@@ -5,7 +5,85 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { BookOpen, HandHeart, Sparkles, Coins, Baby, Calculator, DoorOpen, Flower2, ClipboardList, Copy, Check, X } from 'lucide-react'
 
+<<<<<<< HEAD
 import { Announcement } from "@/lib/sheets"
+=======
+const announcements = [
+  {
+    id: "PP01",
+    category: "Sermón",
+    title: "SERMON PARA EL DIA SABADO",
+    person: "",
+    companions: [],
+    personLabel: "Predica",
+    verse:
+      "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.",
+    reference: "Romanos 1:16",
+    image: "/bibli.jpg",
+  },
+  {
+    id: "PP02",
+    category: "Limpieza",
+    title: "LIMPIEZA DE LA IGLESIA",
+    persons: [],
+    personLabel: "Nos ayudan l@s herman@s",
+    verse: "pero hágase todo decentemente y con orden.",
+    reference: "1 Corintios 14:40",
+    image: "/limpieza.jpg",
+  },
+  {
+    id: "PP03",
+    category: "Flores",
+    title: "FLORES PARA LA IGLESIA",
+    person: [""],
+    personLabel: "Nos ayuda herman@",
+    verse:
+      "Sécase la hierba, marchítase la flor; mas la palabra del Dios nuestro permanece para siempre.",
+    reference: "Isaías 40:8",
+    image: "/church-altar-flowers-adventist-decoration-lilies.jpg",
+  },
+  {
+    id: "PP04",
+    category: "Diezmos y Ofrendas",
+    title: "RECOLECCIONES DE DIEZMOS Y OFRENDAS",
+    persons: [],
+    personLabel: "Nos ayudan l@s herman@s",
+    verse: "Y poderoso es Dios para hacer que abunde en vosotros toda gracia, a fin de que, teniendo siempre en todas las cosas todo lo suficiente, abundéis para toda buena obra;",
+    reference: "2 Corintios 9:8",
+    image: "/diezmos.png",
+  },
+  {
+    id: "PP05",
+    category: "Ofrendas de Niños",
+    title: "OFRENDAS DE NIÑOS",
+    person: "",
+    personLabel: "Nos ayuda herman@",
+    verse: "Viéndolo Jesús, se indignó, y les dijo: Dejad a los niños venir a mí, y no se lo impidáis; porque de los tales es el reino de Dios.",
+    reference: "Marcos 10:14",
+    image: "/ninosdiezmo.png",
+  },
+  {
+    id: "PP06",
+    category: "Conteo de Diezmo",
+    title: "CONTEO DE DIEZMO",
+    person: "",
+    personLabel: "Nos ayuda herman@",
+    verse: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová.",
+    reference: "Levítico 27:30",
+    image: "/conteodiezmo.png",
+  },
+  {
+    id: "PP07",
+    category: "Apertura del Templo",
+    title: "APERTURA DEL TEMPLO",
+    person: "",
+    personLabel: "Nos ayuda herman@",
+    verse: "Yo me alegré con los que me decían: A la casa de Jehová iremos.",
+    reference: "Salmos 122:1",
+    image: "/apertura.png",
+  },
+]
+>>>>>>> 197918bbdb9794d32c0059cca1a863d3e0c3a554
 
 interface NextWeekAnnouncementsProps {
   announcements: Announcement[]
@@ -44,14 +122,14 @@ export function NextWeekAnnouncements({ announcements }: NextWeekAnnouncementsPr
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Sermón": return "text-blue-800"
+      case "Sermón": return "text-indigo-900"
       case "Limpieza":
-      case "Apertura del Templo": return "text-emerald-700"
-      case "Flores":
+      case "Apertura del Templo": return "text-emerald-900"
+      case "Flores": return "text-rose-900"
       case "Diezmos y Ofrendas":
       case "Ofrendas de Niños":
-      case "Conteo de Diezmo": return "text-orange-700"
-      default: return "text-emerald-700"
+      case "Conteo de Diezmo": return "text-amber-900"
+      default: return "text-stone-800"
     }
   }
 
@@ -69,17 +147,17 @@ export function NextWeekAnnouncements({ announcements }: NextWeekAnnouncementsPr
   }
 
   return (
-    <div ref={containerRef} className="bg-[#EFE6D5] pt-[200px] lg:pt-[240px]">
+    <div ref={containerRef} className="bg-[#EFE6D5] pt-[280px] md:pt-[240px] lg:pt-[240px]">
       {/* Botón Superior para ver resumen */}
-      <div className="container mx-auto px-6 mb-8 mt-4 flex justify-start">
+      <div className="container mx-auto px-6 mb-12 mt-6 flex justify-start">
         <button
           onClick={() => setShowSummary(true)}
-          className="group relative px-4 py-2 bg-white border border-[#E3D5C1] rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2 overflow-hidden"
+          className="group relative px-6 py-3 bg-white border border-[#E3D5C1] rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-3 overflow-hidden"
         >
           <div className="absolute inset-0 bg-emerald-50 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-          <ClipboardList className="w-4 h-4 text-emerald-700 relative z-10" />
-          <span className="text-[11px] md:text-xs font-bold tracking-[0.1em] text-stone-800 uppercase relative z-10">
-            Ver Resumen de Privilegios
+          <ClipboardList className="w-5 h-5 text-emerald-700 relative z-10" />
+          <span className="text-sm md:text-base font-bold tracking-[0.15em] text-stone-800 uppercase relative z-10">
+            Resumen
           </span>
         </button>
       </div>
@@ -162,13 +240,9 @@ export function NextWeekAnnouncements({ announcements }: NextWeekAnnouncementsPr
                             </p>
                           ))}
                         </div>
-                      ) : item.persons ? (
-                        <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.persons.join(", ")}
-                        </p>
                       ) : (
                         <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.person}
+                          {item.persons ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
                         </p>
                       )}
                     </div>
@@ -263,7 +337,7 @@ export function NextWeekAnnouncements({ announcements }: NextWeekAnnouncementsPr
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className={`text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide ${getCategoryColor(item.category)}`}
                   >
-                    {item.person}
+                    {Array.isArray(item.person) ? item.person.join(", ") : item.person}
                   </motion.p>
                 </div>
               )}
