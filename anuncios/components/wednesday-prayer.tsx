@@ -2,17 +2,10 @@
 
 import { useRef } from "react"
 
-<<<<<<< HEAD
 import { Announcement } from "@/lib/sheets"
 
 interface WednesdayPrayerProps {
   data: Announcement | undefined
-=======
-const wednesdayPrayer = {
-  person: "Hno. Cristian Guisao",
-  verse: "7:00 PM",
-  reference: "Oración",
->>>>>>> 197918bbdb9794d32c0059cca1a863d3e0c3a554
 }
 
 export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
