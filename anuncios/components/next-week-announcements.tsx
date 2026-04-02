@@ -5,83 +5,13 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { BookOpen, HandHeart, Sparkles, Coins, Baby, Calculator, DoorOpen, Flower2, ClipboardList, Copy, Check, X } from 'lucide-react'
 
-const announcements = [
-  {
-    id: "PP01",
-    category: "Sermón",
-    title: "SERMON PARA EL DIA SABADO",
-    person: "",
-    companions: [],
-    personLabel: "Predica",
-    verse:
-      "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.",
-    reference: "Romanos 1:16",
-    image: "/bibli.jpg",
-  },
-  {
-    id: "PP02",
-    category: "Limpieza",
-    title: "LIMPIEZA DE LA IGLESIA",
-    persons: [],
-    personLabel: "Nos ayudan l@s herman@s",
-    verse: "pero hágase todo decentemente y con orden.",
-    reference: "1 Corintios 14:40",
-    image: "/limpieza.jpg",
-  },
-  {
-    id: "PP03",
-    category: "Flores",
-    title: "FLORES PARA LA IGLESIA",
-    person: [""],
-    personLabel: "Nos ayuda herman@",
-    verse:
-      "Sécase la hierba, marchítase la flor; mas la palabra del Dios nuestro permanece para siempre.",
-    reference: "Isaías 40:8",
-    image: "/church-altar-flowers-adventist-decoration-lilies.jpg",
-  },
-  {
-    id: "PP04",
-    category: "Diezmos y Ofrendas",
-    title: "RECOLECCIONES DE DIEZMOS Y OFRENDAS",
-    persons: [],
-    personLabel: "Nos ayudan l@s herman@s",
-    verse: "Y poderoso es Dios para hacer que abunde en vosotros toda gracia, a fin de que, teniendo siempre en todas las cosas todo lo suficiente, abundéis para toda buena obra;",
-    reference: "2 Corintios 9:8",
-    image: "/diezmos.png",
-  },
-  {
-    id: "PP05",
-    category: "Ofrendas de Niños",
-    title: "OFRENDAS DE NIÑOS",
-    person: "",
-    personLabel: "Nos ayuda herman@",
-    verse: "Viéndolo Jesús, se indignó, y les dijo: Dejad a los niños venir a mí, y no se lo impidáis; porque de los tales es el reino de Dios.",
-    reference: "Marcos 10:14",
-    image: "/ninosdiezmo.png",
-  },
-  {
-    id: "PP06",
-    category: "Conteo de Diezmo",
-    title: "CONTEO DE DIEZMO",
-    person: "",
-    personLabel: "Nos ayuda herman@",
-    verse: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová.",
-    reference: "Levítico 27:30",
-    image: "/conteodiezmo.png",
-  },
-  {
-    id: "PP07",
-    category: "Apertura del Templo",
-    title: "APERTURA DEL TEMPLO",
-    person: "",
-    personLabel: "Nos ayuda herman@",
-    verse: "Yo me alegré con los que me decían: A la casa de Jehová iremos.",
-    reference: "Salmos 122:1",
-    image: "/apertura.png",
-  },
-]
+import { Announcement } from "@/lib/sheets"
 
-export function NextWeekAnnouncements() {
+interface NextWeekAnnouncementsProps {
+  announcements: Announcement[]
+}
+
+export function NextWeekAnnouncements({ announcements }: NextWeekAnnouncementsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [copied, setCopied] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
@@ -96,7 +26,7 @@ export function NextWeekAnnouncements() {
         if (item.companions && item.companions.length > 0) {
           item.companions.forEach(c => textToCopy += `   • ${c}\n`);
         }
-      } else if (item.persons) {
+      } else if (item.persons && item.persons.length > 0) {
         textToCopy += `   • ${item.persons.join(", ")}\n`;
       } else {
         textToCopy += `   • ${item.person}\n`;
@@ -234,7 +164,7 @@ export function NextWeekAnnouncements() {
                         </div>
                       ) : (
                         <p className={`text-lg md:text-xl font-bold tracking-wide ${getCategoryColor(item.category)}`}>
-                          {item.persons ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
+                          {item.persons && item.persons.length > 0 ? item.persons.join(", ") : (Array.isArray(item.person) ? item.person.join(", ") : item.person)}
                         </p>
                       )}
                     </div>
@@ -301,7 +231,7 @@ export function NextWeekAnnouncements() {
                     </div>
                   )}
                 </div>
-              ) : item.persons ? (
+              ) : item.persons && item.persons.length > 0 ? (
                 <div>
                   <span className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase block mb-3 font-medium">
                     {item.personLabel}

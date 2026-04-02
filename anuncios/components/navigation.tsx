@@ -8,9 +8,12 @@ interface NavigationProps {
   onTabChange: (tab: Tab) => void
   activeSubTab: SubTab
   onSubTabChange: (subTab: SubTab) => void
+  thisWeekTitle: string
+  nextWeekTitle: string
+  wednesdayTitle: string
 }
 
-export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChange }: NavigationProps) {
+export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChange, thisWeekTitle, nextWeekTitle, wednesdayTitle }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/90 backdrop-blur-md">
       <div className="flex flex-col items-center justify-center pt-6 pb-4">
@@ -99,10 +102,10 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
           <p className="text-xs md:text-sm tracking-[0.3em] text-stone-500 uppercase font-medium">
             {activeTab === "anuncios" ? (
               activeSubTab === "esta-semana"
-                ? "Para este Sabado 21 de Marzo del 2026 Nos ayudaran:"
+                ? thisWeekTitle
                 : activeSubTab === "proxima-semana"
-                  ? "Anuncios Para el Sábado 21 de Marzo del 2026"
-                  : "Miércoles de Oración - 25 de Marzo del 2026"
+                  ? nextWeekTitle
+                  : wednesdayTitle
             ) : (
               activeSubTab === "proximos-eventos"
                 ? "Próximos eventos especiales"

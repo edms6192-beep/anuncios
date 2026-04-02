@@ -2,13 +2,18 @@
 
 import { useRef } from "react"
 
-const wednesdayPrayer = {
-  person: "Hno. Cristian Guisao",
-  verse: "7:00 PM",
-  reference: "Oración",
+import { Announcement } from "@/lib/sheets"
+
+interface WednesdayPrayerProps {
+  data: Announcement | undefined
 }
 
-export function WednesdayPrayer() {
+export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
+  const wednesdayPrayer = data || {
+    person: "Hna. --------",
+    verse: "7-pm",
+    reference: "Abre el Hno. Jose Jumbo",
+  }
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
