@@ -7,10 +7,11 @@ import { NoEvents } from "@/components/no-events"
 import { NextWeekAnnouncements } from "@/components/next-week-announcements"
 import { WednesdayPrayer } from "@/components/wednesday-prayer"
 import { EventsHistory } from "@/components/events-history"
+import { JaProgram } from "@/components/ja-program"
 import { fetchAnnouncementsFromSheet, getConfigs, Announcement } from "@/lib/sheets"
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"anuncios" | "eventos">("anuncios")
+  const [activeTab, setActiveTab] = useState<"anuncios" | "eventos" | "ja">("anuncios")
   const [activeSubTab, setActiveSubTab] = useState<"esta-semana" | "proxima-semana" | "miercoles-oracion" | "proximos-eventos" | "historial">("esta-semana")
   const [data, setData] = useState<Announcement[]>([])
   const [loading, setLoading] = useState(true)
@@ -22,11 +23,11 @@ export default function Home() {
     })
   }, [])
 
-  const handleTabChange = (tab: "anuncios" | "eventos") => {
+  const handleTabChange = (tab: "anuncios" | "eventos" | "ja") => {
     setActiveTab(tab)
     if (tab === "anuncios") {
       setActiveSubTab("esta-semana")
-    } else {
+    } else if (tab === "eventos") {
       setActiveSubTab("proximos-eventos")
     }
   }
@@ -43,6 +44,10 @@ export default function Home() {
           <div className="animate-pulse text-stone-500 tracking-[0.2em] font-medium">Cargando anuncios...</div>
         </div>
       )
+    }
+
+    if (activeTab === "ja") {
+      return <JaProgram />
     }
 
     if (activeTab === "eventos") {

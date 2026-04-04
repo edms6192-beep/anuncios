@@ -1,6 +1,6 @@
 "use client"
 
-type Tab = "anuncios" | "eventos"
+type Tab = "anuncios" | "eventos" | "ja"
 type SubTab = "esta-semana" | "proxima-semana" | "miercoles-oracion" | "proximos-eventos" | "historial"
 
 interface NavigationProps {
@@ -35,6 +35,16 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
               }`}
           >
             Eventos
+          </button>
+
+          <span className="text-stone-300">|</span>
+
+          <button
+            onClick={() => onTabChange("ja")}
+            className={`px-4 py-2 transition-all duration-300 uppercase font-medium ${activeTab === "ja" ? "text-stone-800" : "text-stone-400 hover:text-stone-600"
+              }`}
+          >
+            JA
           </button>
         </div>
 
@@ -106,10 +116,12 @@ export function Navigation({ activeTab, onTabChange, activeSubTab, onSubTabChang
                 : activeSubTab === "proxima-semana"
                   ? nextWeekTitle
                   : wednesdayTitle
-            ) : (
+            ) : activeTab === "eventos" ? (
               activeSubTab === "proximos-eventos"
                 ? "Próximos eventos especiales"
                 : "Historial de eventos pasados"
+            ) : (
+              "Rol de Programación JA"
             )}
           </p>
         </div>
