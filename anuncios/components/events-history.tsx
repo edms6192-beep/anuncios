@@ -3,6 +3,16 @@
 import Image from "next/image"
 
 const EVENTS_BY_MONTH = {
+    "Abril 2026": [
+        {
+            id: 4,
+            title: "SEMANA SANTA",
+            subtitle: "Conmemorando la pasión, muerte y resurrección de Jesucristo",
+            image: "/pasion.png",
+            date: "Del 30 de marzo al 4 de abril",
+            description: "Te invitamos a participar de nuestros programas especiales de Semana Santa.",
+        }
+    ],
     "Febrero 2026": [
         {
             id: 1,

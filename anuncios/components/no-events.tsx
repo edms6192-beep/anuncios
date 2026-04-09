@@ -18,20 +18,7 @@ const EVENTS: {
   location: string;
   description: string;
   detailedInfo?: string;
-}[] = [
-  {
-    id: 1,
-    title: "SEMANA SANTA",
-    subtitle: "Conmemorando la pasión, muerte y resurrección de Jesucristo",
-    image: "/pasion.png",
-    badge: "Especial",
-    badgeColor: "bg-purple-600",
-    date: "Del 30 de marzo al 4 de abril",
-    time: "7:00 PM",
-    location: "Iglesia del Valle (Calles Cuenca y Chone)",
-    description: "Te invitamos a participar de nuestros programas especiales de Semana Santa."
-  }
-]
+}[] = []
 
 export function NoEvents() {
   const [currentIndex, setCurrentIndex] = useState(0)
