@@ -184,7 +184,7 @@ export function AnnouncementCarousel({
               {/* Centro: Título, Persona, Versículo y Botones */}
               <div className="flex-1 flex flex-col justify-center space-y-6 my-auto">
                 {/* Título Principal de la Imagen */}
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white tracking-[0.06em] leading-[1.15] mb-6 md:mb-8 font-brunson">
+                <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-normal text-white tracking-[0.06em] leading-[0.95] mb-8 md:mb-12 font-brunson uppercase">
                   {currentItem.title}
                 </h2>
 
