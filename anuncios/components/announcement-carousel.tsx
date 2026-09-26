@@ -54,13 +54,13 @@ export function AnnouncementCarousel({
     setCurrentIndex((prev) => (prev - 1 + total) % total)
   }, [total])
 
-  // Reproducción Automática de 5 Segundos (5000ms)
+  // Reproducción Automática de 6 Segundos (6000ms)
   useEffect(() => {
     if (isPaused || total <= 1 || showSummary) return
 
     const timer = setInterval(() => {
       handleNext()
-    }, 5000)
+    }, 6000)
 
     return () => clearInterval(timer)
   }, [handleNext, isPaused, total, showSummary])
@@ -160,14 +160,14 @@ export function AnnouncementCarousel({
       onMouseLeave={() => setIsPaused(false)}
       className="bg-[#0B2519] text-white min-h-screen w-full relative pt-[52px] flex flex-col justify-between overflow-x-hidden"
     >
-      {/* Barra de Progreso de 5 Segundos en la parte superior */}
+      {/* Barra de Progreso de 6 Segundos en la parte superior */}
       <div className="absolute top-[52px] left-0 right-0 h-1 bg-white/10 z-30 overflow-hidden">
         {!isPaused && (
           <motion.div
             key={currentIndex}
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
-            transition={{ duration: 5, ease: "linear" }}
+            transition={{ duration: 6, ease: "linear" }}
             className="h-full bg-emerald-400"
           />
         )}
@@ -195,28 +195,26 @@ export function AnnouncementCarousel({
           >
             {/* Columna Izquierda: Información del Anuncio */}
             <div className="w-full lg:w-[50%] flex flex-col justify-between space-y-8 pr-0 lg:pr-8 min-h-[50vh] lg:min-h-[calc(100vh-120px)]">
-              {/* Barra de Encabezado Superior */}
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-emerald-300">
-                    {getCategoryIcon(currentItem.category)}
-                    <span>{currentItem.category || "ANUNCIO"}</span>
-                  </div>
-
-                  <span className="text-xs tracking-[0.2em] text-stone-400 font-semibold uppercase">
-                    {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                  </span>
+              {/* Barra de Encabezado Superior (Alineada a la izquierda) */}
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-2">
+                <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-emerald-300">
+                  {getCategoryIcon(currentItem.category)}
+                  <span>{currentItem.category || "ANUNCIO"}</span>
                 </div>
+
+                <span className="text-xs tracking-[0.2em] text-stone-400 font-semibold uppercase">
+                  {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </span>
 
                 <div className="flex items-center gap-3">
                   {/* Indicador Play/Pause */}
                   <button
                     onClick={() => setIsPaused(!isPaused)}
-                    className="p-1.5 text-stone-400 hover:text-white transition-colors cursor-pointer"
+                    className="p-1 text-stone-400 hover:text-white transition-colors cursor-pointer"
                     title={isPaused ? "Reanudar carrusel" : "Pausar carrusel"}
                     aria-label={isPaused ? "Reanudar" : "Pausar"}
                   >
-                    {isPaused ? <Play className="w-4 h-4 text-emerald-400" /> : <Pause className="w-4 h-4" />}
+                    {isPaused ? <Play className="w-4 h-4 text-emerald-400" /> : <Pause className="w-4 h-4 text-emerald-400" />}
                   </button>
 
                   <button
