@@ -18,7 +18,9 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Share2
+  Share2,
+  Play,
+  Pause
 } from "lucide-react"
 
 import { Announcement } from "@/lib/sheets"
@@ -36,6 +38,7 @@ export function AnnouncementCarousel({
   const [direction, setDirection] = useState(0)
   const [showSummary, setShowSummary] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
   const total = announcements.length
 
@@ -50,6 +53,17 @@ export function AnnouncementCarousel({
     setDirection(-1)
     setCurrentIndex((prev) => (prev - 1 + total) % total)
   }, [total])
+
+  // Reproducción Automática de 5 Segundos (5000ms)
+  useEffect(() => {
+    if (isPaused || total <= 1 || showSummary) return
+
+    const timer = setInterval(() => {
+      handleNext()
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [handleNext, isPaused, total, showSummary])
 
   // Manejo de teclado
   useEffect(() => {
@@ -118,24 +132,48 @@ export function AnnouncementCarousel({
 
   const currentItem = announcements[currentIndex]
 
+  // Variantes para Transición Bonita y Fluida (Slide + Scale + Fade)
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? "100%" : "-100%",
-      opacity: 0
+      x: dir > 0 ? "80%" : "-80%",
+      opacity: 0,
+      scale: 0.96,
+      filter: "blur(4px)"
     }),
     center: {
       x: 0,
-      opacity: 1
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)"
     },
     exit: (dir: number) => ({
-      x: dir < 0 ? "100%" : "-100%",
-      opacity: 0
+      x: dir < 0 ? "80%" : "-80%",
+      opacity: 0,
+      scale: 0.96,
+      filter: "blur(4px)"
     })
   }
 
   return (
-    <div className="bg-[#0B2519] text-white min-h-screen w-full relative pt-[52px] flex flex-col justify-between overflow-x-hidden">
-      {/* Carrusel a Pantalla Completa con la estética de la imagen de referencia */}
+    <div
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className="bg-[#0B2519] text-white min-h-screen w-full relative pt-[52px] flex flex-col justify-between overflow-x-hidden"
+    >
+      {/* Barra de Progreso de 5 Segundos en la parte superior */}
+      <div className="absolute top-[52px] left-0 right-0 h-1 bg-white/10 z-30 overflow-hidden">
+        {!isPaused && (
+          <motion.div
+            key={currentIndex}
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 5, ease: "linear" }}
+            className="h-full bg-emerald-400"
+          />
+        )}
+      </div>
+
+      {/* Carrusel a Pantalla Completa con Transición Bonita */}
       <div className="w-full flex-1 relative flex flex-col">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
@@ -145,7 +183,7 @@ export function AnnouncementCarousel({
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.15}
@@ -157,10 +195,9 @@ export function AnnouncementCarousel({
           >
             {/* Columna Izquierda: Información del Anuncio */}
             <div className="w-full lg:w-[50%] flex flex-col justify-between space-y-8 pr-0 lg:pr-8 min-h-[50vh] lg:min-h-[calc(100vh-120px)]">
-              {/* Barra de Encabezado Superior de la Columna Izquierda */}
+              {/* Barra de Encabezado Superior */}
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  {/* Insignia de Categoría sin burbuja */}
                   <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-emerald-300">
                     {getCategoryIcon(currentItem.category)}
                     <span>{currentItem.category || "ANUNCIO"}</span>
@@ -171,31 +208,42 @@ export function AnnouncementCarousel({
                   </span>
                 </div>
 
-                {/* Botón Ver Resumen sin burbuja */}
-                <button
-                  onClick={() => setShowSummary(true)}
-                  className="text-xs font-semibold tracking-[0.15em] text-white hover:text-emerald-300 uppercase transition-all flex items-center gap-2 cursor-pointer"
-                >
-                  <ClipboardList className="w-4 h-4 text-emerald-400" />
-                  <span>Ver Resumen</span>
-                </button>
+                <div className="flex items-center gap-3">
+                  {/* Indicador Play/Pause */}
+                  <button
+                    onClick={() => setIsPaused(!isPaused)}
+                    className="p-1.5 text-stone-400 hover:text-white transition-colors cursor-pointer"
+                    title={isPaused ? "Reanudar carrusel" : "Pausar carrusel"}
+                    aria-label={isPaused ? "Reanudar" : "Pausar"}
+                  >
+                    {isPaused ? <Play className="w-4 h-4 text-emerald-400" /> : <Pause className="w-4 h-4" />}
+                  </button>
+
+                  <button
+                    onClick={() => setShowSummary(true)}
+                    className="text-xs font-semibold tracking-[0.15em] text-white hover:text-emerald-300 uppercase transition-all flex items-center gap-2 cursor-pointer"
+                  >
+                    <ClipboardList className="w-4 h-4 text-emerald-400" />
+                    <span>Ver Resumen</span>
+                  </button>
+                </div>
               </div>
 
               {/* Centro: Título, Persona, Versículo y Botones */}
               <div className="flex-1 flex flex-col justify-center space-y-6 my-auto">
-                {/* Título Principal de la Imagen */}
+                {/* Título Principal */}
                 <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-normal text-white tracking-[0.06em] leading-[0.95] mb-8 md:mb-12 font-brunson uppercase">
                   {currentItem.title}
                 </h2>
 
-                {/* Encargado / Personas */}
-                <div className="space-y-4">
+                {/* Encargado / Personas (Sección destacada en tamaño grande) */}
+                <div className="space-y-6 my-2 border-l-4 border-emerald-400 pl-4 sm:pl-6 py-2">
                   <div>
                     <span className="text-xs sm:text-sm md:text-base tracking-[0.3em] text-emerald-300 uppercase block mb-2 font-bold">
                       {currentItem.personLabel || "Encargado(a)"}
                     </span>
                     {currentItem.category === "Sermón" ? (
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-400 drop-shadow-sm">
                           {currentItem.person}
                         </p>
@@ -235,23 +283,23 @@ export function AnnouncementCarousel({
                       </p>
                     )}
                   </div>
-
-                  {/* Versículo / Cita Bíblica */}
-                  {currentItem.verse && (
-                    <div className="pt-6 border-t border-white/15 max-w-xl">
-                      <p className="text-stone-300 italic text-base md:text-lg leading-relaxed">
-                        "{currentItem.verse}"
-                      </p>
-                      {currentItem.reference && (
-                        <p className="text-xs md:text-sm tracking-[0.25em] text-stone-400 mt-2 uppercase font-medium">
-                          — {currentItem.reference}
-                        </p>
-                      )}
-                    </div>
-                  )}
                 </div>
 
-                {/* Botones de Acción (Estilo cápsula y botones circulares) */}
+                {/* Versículo / Cita Bíblica */}
+                {currentItem.verse && (
+                  <div className="pt-6 border-t border-white/15 max-w-xl">
+                    <p className="text-stone-300 italic text-base md:text-lg leading-relaxed">
+                      "{currentItem.verse}"
+                    </p>
+                    {currentItem.reference && (
+                      <p className="text-xs md:text-sm tracking-[0.25em] text-stone-400 mt-2 uppercase font-medium">
+                        — {currentItem.reference}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Botones de Acción */}
                 <div className="flex flex-wrap items-center gap-3 pt-4">
                   <button
                     onClick={handlePrev}
@@ -287,7 +335,7 @@ export function AnnouncementCarousel({
                 </div>
               </div>
 
-              {/* Tira del Pie de Columna con Avatares */}
+              {/* Tira del Pie de Columna */}
               <div className="pt-6 border-t border-white/15 flex items-center gap-3">
                 <div className="flex -space-x-2 overflow-hidden">
                   <div className="inline-block h-8 w-8 rounded-full bg-emerald-700 text-white font-bold text-xs flex items-center justify-center ring-2 ring-[#0B2519]">
@@ -306,9 +354,14 @@ export function AnnouncementCarousel({
               </div>
             </div>
 
-            {/* Columna Derecha: Fotografía Enmarcada con esquinas redondeadas (idéntica a la imagen de referencia) */}
+            {/* Columna Derecha: Fotografía Enmarcada con animación suave */}
             <div className="w-full lg:w-[50%] flex flex-col items-center justify-center pt-8 lg:pt-0">
-              <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[480px] xl:h-[540px] rounded-2xl lg:rounded-[28px] overflow-hidden shadow-2xl border border-white/15 bg-stone-900">
+              <motion.div
+                initial={{ scale: 0.96, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[480px] xl:h-[540px] rounded-2xl lg:rounded-[28px] overflow-hidden shadow-2xl border border-white/15 bg-stone-900"
+              >
                 <Image
                   src={currentItem.image || "/placeholder.svg"}
                   alt={currentItem.title || "Anuncio"}
@@ -317,7 +370,7 @@ export function AnnouncementCarousel({
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
-              </div>
+              </motion.div>
               <span className="text-[11px] tracking-[0.25em] text-stone-400 uppercase font-medium mt-3 text-center">
                 Tu Fe, Nuestra Misión • IASD
               </span>
