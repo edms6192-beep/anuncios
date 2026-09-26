@@ -71,34 +71,34 @@ export function Navigation({
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/95 backdrop-blur-md border-b border-[#E3D5C1]/80 shadow-sm transition-all">
-      {/* Barra Header Principal */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-        {/* Lado Izquierdo: Botón Menú Hamburguesa + Título */}
-        <div className="flex items-center gap-3 md:gap-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/95 backdrop-blur-md border-b border-[#E3D5C1]/80 shadow-xs transition-all">
+      {/* Barra Header Principal alineada directamente a los extremos */}
+      <div className="w-full px-3 sm:px-4 md:px-6 py-2.5 flex items-center justify-between">
+        {/* Lado Izquierdo: Botón Menú sin burbuja alineado a la esquina + Badge */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2.5 bg-white/80 hover:bg-white border border-[#E3D5C1] rounded-2xl text-stone-800 transition-all duration-300 shadow-sm flex items-center gap-2 group"
+            className="p-1.5 text-stone-800 hover:text-stone-900 transition-colors flex items-center gap-2 group cursor-pointer"
             aria-label="Toggle Menu"
           >
             {isOpen ? (
-              <X className="w-5 h-5 text-stone-800 transition-transform duration-300 group-hover:rotate-90" />
+              <X className="w-6 h-6 text-stone-800 transition-transform duration-300 group-hover:rotate-90" />
             ) : (
-              <Menu className="w-5 h-5 text-stone-800 transition-transform duration-300 group-hover:scale-110" />
+              <Menu className="w-6 h-6 text-stone-800 transition-transform duration-300 group-hover:scale-110" />
             )}
-            <span className="text-xs font-bold tracking-[0.15em] uppercase hidden sm:inline-block text-stone-700">
-              Menú
+            <span className="text-xs font-bold tracking-[0.18em] uppercase text-stone-800">
+              MENÚ
             </span>
           </button>
 
           {/* Badge Sección Activa */}
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-stone-700 bg-white/60 border border-[#E3D5C1] px-3 py-1.5 rounded-full">
+            <span className="text-[11px] md:text-xs font-semibold tracking-[0.18em] uppercase text-stone-700 bg-white/50 border border-[#E3D5C1] px-2.5 py-1 rounded-full">
               {activeTab === "anuncios"
-                ? `Anuncios • ${getSubTabLabel(activeSubTab)}`
+                ? `ANUNCIOS • ${getSubTabLabel(activeSubTab).toUpperCase()}`
                 : activeTab === "eventos"
-                ? `Eventos • ${getSubTabLabel(activeSubTab)}`
-                : "Programa JA"}
+                ? `EVENTOS • ${getSubTabLabel(activeSubTab).toUpperCase()}`
+                : "PROGRAMA JA"}
             </span>
           </div>
         </div>
@@ -115,21 +115,21 @@ export function Navigation({
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Fondo oscuro traslúcido para cerrar al hacer clic afuera */}
+            {/* Fondo oscuro traslúcido */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 top-[60px] bg-stone-900/30 backdrop-blur-xs z-40"
+              className="fixed inset-0 top-[52px] bg-stone-900/30 backdrop-blur-xs z-40"
             />
 
             {/* Panel Desplegable del Menú */}
             <motion.div
-              initial={{ opacity: 0, y: -20, height: 0 }}
+              initial={{ opacity: 0, y: -15, height: 0 }}
               animate={{ opacity: 1, y: 0, height: "auto" }}
-              exit={{ opacity: 0, y: -20, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              exit={{ opacity: 0, y: -15, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
               className="relative z-50 bg-[#FAF7F2] border-b border-[#E3D5C1] shadow-xl overflow-hidden"
             >
               <div className="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
