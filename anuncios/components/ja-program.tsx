@@ -32,15 +32,15 @@ const SUPPORT_FAMILIES = [
 
 export function JaProgram() {
   return (
-    <div className="bg-[#EFE6D5] min-h-screen pt-56 px-4 md:px-8 lg:px-16 pb-20">
+    <div className="bg-[#0B2519] text-white min-h-screen pt-36 px-4 md:px-8 lg:px-16 pb-20">
       <div className="max-w-5xl mx-auto space-y-16">
         {/* Header Section */}
         <div className="text-center space-y-6">
           <div className="inline-flex items-center justify-center p-4 bg-emerald-800 rounded-full mb-4 shadow-xl shadow-emerald-900/20">
             <Star className="w-10 h-10 text-emerald-100 fill-emerald-100" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-light text-stone-800 tracking-tight">
-            ROL DE PROGRAMACIÓN <span className="font-bold text-emerald-800">JA</span>
+          <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight font-brunson">
+            ROL DE PROGRAMACIÓN <span className="font-bold text-emerald-400">JA</span>
           </h2>
           <p className="text-stone-500 tracking-[0.2em] uppercase text-sm md:text-base font-medium">
             Abril – Mayo – Junio 2026

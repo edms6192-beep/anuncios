@@ -3,6 +3,26 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Brunson';
+  src: url('/fuentes/Brunson.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brunson Rough';
+  src: url('/fuentes/Brunson Rough.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-brunson {
+  font-family: 'Brunson', Georgia, serif;
+}
+
 :root {
   --background: oklch(0.98 0.002 240);
   --foreground: oklch(0.15 0 0);
