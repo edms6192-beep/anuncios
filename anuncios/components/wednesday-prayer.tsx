@@ -25,7 +25,7 @@ export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
       {/* Columna Izquierda: Información */}
       <div className="w-full lg:w-[50%] flex flex-col justify-between space-y-8 pr-0 lg:pr-8 min-h-[50vh] lg:min-h-[calc(100vh-120px)]">
         <div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-xs font-semibold tracking-[0.2em] uppercase text-emerald-300">
+          <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-emerald-300">
             <Sparkles className="w-4 h-4 text-emerald-300" />
             <span>MIÉRCOLES DE ORACIÓN</span>
           </div>

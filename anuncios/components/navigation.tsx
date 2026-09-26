@@ -91,9 +91,9 @@ export function Navigation({
             </span>
           </button>
 
-          {/* Badge Sección Activa */}
+          {/* Badge Sección Activa sin burbuja */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] md:text-xs font-semibold tracking-[0.18em] uppercase text-emerald-300 bg-white/10 border border-white/20 px-3 py-1 rounded-full">
+            <span className="text-[11px] md:text-xs font-semibold tracking-[0.18em] uppercase text-emerald-300">
               {activeTab === "anuncios"
                 ? `ANUNCIOS • ${getSubTabLabel(activeSubTab).toUpperCase()}`
                 : activeTab === "eventos"

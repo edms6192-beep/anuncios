@@ -160,8 +160,8 @@ export function AnnouncementCarousel({
               {/* Barra de Encabezado Superior de la Columna Izquierda */}
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  {/* Insignia Píldora idéntica a la imagen de referencia */}
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-xs font-semibold tracking-[0.2em] uppercase text-emerald-300">
+                  {/* Insignia de Categoría sin burbuja */}
+                  <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-emerald-300">
                     {getCategoryIcon(currentItem.category)}
                     <span>{currentItem.category || "ANUNCIO"}</span>
                   </div>
@@ -171,9 +171,10 @@ export function AnnouncementCarousel({
                   </span>
                 </div>
 
+                {/* Botón Ver Resumen sin burbuja */}
                 <button
                   onClick={() => setShowSummary(true)}
-                  className="px-4 py-2 border border-white/20 bg-white/5 hover:bg-white/10 rounded-full text-xs font-semibold tracking-[0.15em] text-white uppercase transition-all shadow-xs flex items-center gap-2 cursor-pointer"
+                  className="text-xs font-semibold tracking-[0.15em] text-white hover:text-emerald-300 uppercase transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <ClipboardList className="w-4 h-4 text-emerald-400" />
                   <span>Ver Resumen</span>
@@ -203,13 +204,11 @@ export function AnnouncementCarousel({
                             <span className="text-xs tracking-[0.2em] text-stone-400 uppercase block mb-1 font-medium">
                               Acompañantes
                             </span>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap items-center gap-2 text-stone-300 text-sm md:text-base font-medium">
                               {currentItem.companions.map((comp, i) => (
-                                <span
-                                  key={i}
-                                  className="px-3.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs md:text-sm font-semibold text-stone-200"
-                                >
+                                <span key={i}>
                                   {comp}
+                                  {i < currentItem.companions!.length - 1 ? " • " : ""}
                                 </span>
                               ))}
                             </div>
