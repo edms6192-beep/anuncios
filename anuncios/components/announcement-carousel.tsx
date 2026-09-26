@@ -191,22 +191,22 @@ export function AnnouncementCarousel({
                 {/* Encargado / Personas */}
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs md:text-sm tracking-[0.25em] text-stone-400 uppercase block mb-1.5 font-medium">
+                    <span className="text-xs sm:text-sm md:text-base tracking-[0.3em] text-emerald-300 uppercase block mb-2 font-bold">
                       {currentItem.personLabel || "Encargado(a)"}
                     </span>
                     {currentItem.category === "Sermón" ? (
                       <div className="space-y-3">
-                        <p className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide text-emerald-300">
+                        <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-400 drop-shadow-sm">
                           {currentItem.person}
                         </p>
                         {currentItem.companions && currentItem.companions.length > 0 && (
-                          <div className="pt-2">
-                            <span className="text-xs tracking-[0.2em] text-stone-400 uppercase block mb-1 font-medium">
+                          <div className="pt-3">
+                            <span className="text-xs sm:text-sm tracking-[0.3em] text-stone-400 uppercase block mb-2 font-bold">
                               Acompañantes
                             </span>
-                            <div className="flex flex-wrap items-center gap-2 text-stone-300 text-sm md:text-base font-medium">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-stone-100 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">
                               {currentItem.companions.map((comp, i) => (
-                                <span key={i}>
+                                <span key={i} className="text-stone-100">
                                   {comp}
                                   {i < currentItem.companions!.length - 1 ? " • " : ""}
                                 </span>
@@ -216,11 +216,11 @@ export function AnnouncementCarousel({
                         )}
                       </div>
                     ) : currentItem.persons && currentItem.persons.length > 0 ? (
-                      <div className="flex flex-wrap gap-x-3 gap-y-1">
+                      <div className="flex flex-wrap gap-x-4 gap-y-2">
                         {currentItem.persons.map((person, i) => (
                           <p
                             key={i}
-                            className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide text-emerald-300"
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-400 drop-shadow-sm"
                           >
                             {person}
                             {i < currentItem.persons!.length - 1 ? "," : ""}
@@ -228,7 +228,7 @@ export function AnnouncementCarousel({
                         ))}
                       </div>
                     ) : (
-                      <p className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide text-emerald-300">
+                      <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-400 drop-shadow-sm">
                         {Array.isArray(currentItem.person)
                           ? currentItem.person.join(", ")
                           : currentItem.person || "Por asignar"}
