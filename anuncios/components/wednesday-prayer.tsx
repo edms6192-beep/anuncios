@@ -38,10 +38,10 @@ export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
 
           <div className="space-y-4">
             <div>
-              <span className="text-xs sm:text-sm md:text-base tracking-[0.3em] text-emerald-300 uppercase block mb-2 font-bold">
+              <span className="text-xs sm:text-sm md:text-base tracking-[0.3em] text-emerald-300 uppercase block mb-2 font-medium">
                 Tema Central / Encargado
               </span>
-              <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-400 drop-shadow-sm">
+              <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[0.08em] text-emerald-400">
                 {wednesdayPrayer.person}
               </p>
             </div>
