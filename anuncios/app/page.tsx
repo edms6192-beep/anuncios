@@ -69,7 +69,7 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-[#EFE6D5] min-h-screen">
+    <main className="bg-[#0B2519] text-white min-h-screen">
       <Navigation
         activeTab={activeTab}
         onTabChange={handleTabChange}

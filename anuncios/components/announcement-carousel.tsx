@@ -87,66 +87,30 @@ export function AnnouncementCarousel({
     })
   }
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "Sermón":
-        return "text-indigo-900"
-      case "Limpieza":
-      case "Apertura del Templo":
-        return "text-emerald-900"
-      case "Flores":
-        return "text-rose-900"
-      case "Diezmos y Ofrendas":
-      case "Ofrendas de Niños":
-      case "Conteo de Diezmo":
-        return "text-amber-900"
-      default:
-        return "text-stone-800"
-    }
-  }
-
-  const getCategoryBadgeColor = (category: string) => {
-    switch (category) {
-      case "Sermón":
-        return "border-indigo-300 text-indigo-900 bg-indigo-50/70"
-      case "Limpieza":
-      case "Apertura del Templo":
-        return "border-emerald-300 text-emerald-900 bg-emerald-50/70"
-      case "Flores":
-        return "border-rose-300 text-rose-900 bg-rose-50/70"
-      case "Diezmos y Ofrendas":
-      case "Ofrendas de Niños":
-      case "Conteo de Diezmo":
-        return "border-amber-300 text-amber-900 bg-amber-50/70"
-      default:
-        return "border-stone-300 text-stone-800 bg-white/70"
-    }
-  }
-
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "Sermón":
-        return <BookOpen className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <BookOpen className="w-4 h-4 text-emerald-300" />
       case "Limpieza":
-        return <Sparkles className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <Sparkles className="w-4 h-4 text-emerald-300" />
       case "Flores":
-        return <Flower2 className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <Flower2 className="w-4 h-4 text-emerald-300" />
       case "Diezmos y Ofrendas":
-        return <Coins className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <Coins className="w-4 h-4 text-emerald-300" />
       case "Ofrendas de Niños":
-        return <Baby className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <Baby className="w-4 h-4 text-emerald-300" />
       case "Conteo de Diezmo":
-        return <Calculator className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <Calculator className="w-4 h-4 text-emerald-300" />
       case "Apertura del Templo":
-        return <DoorOpen className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <DoorOpen className="w-4 h-4 text-emerald-300" />
       default:
-        return <HandHeart className={`w-4 h-4 ${getCategoryColor(category)}`} />
+        return <HandHeart className="w-4 h-4 text-emerald-300" />
     }
   }
 
   if (!announcements || announcements.length === 0) {
     return (
-      <div className="pt-[140px] pb-16 px-4 text-center text-stone-500 min-h-screen bg-[#EFE6D5] flex items-center justify-center">
+      <div className="pt-[140px] pb-16 px-4 text-center text-stone-400 min-h-screen bg-[#0B2519] flex items-center justify-center">
         No hay anuncios registrados para esta sección.
       </div>
     )
@@ -154,7 +118,6 @@ export function AnnouncementCarousel({
 
   const currentItem = announcements[currentIndex]
 
-  // Variantes para animación a pantalla completa
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? "100%" : "-100%",
@@ -171,8 +134,8 @@ export function AnnouncementCarousel({
   }
 
   return (
-    <div className="bg-[#EFE6D5] min-h-screen w-full relative pt-[52px] flex flex-col justify-between overflow-x-hidden">
-      {/* Carrusel a Pantalla Completa (Full Screen - Sin caja ni tarjeta contenida) */}
+    <div className="bg-[#0B2519] text-white min-h-screen w-full relative pt-[52px] flex flex-col justify-between overflow-x-hidden">
+      {/* Carrusel a Pantalla Completa con la estética de la imagen de referencia */}
       <div className="w-full flex-1 relative flex flex-col">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
@@ -190,18 +153,15 @@ export function AnnouncementCarousel({
               if (info.offset.x < -70) handleNext()
               if (info.offset.x > 70) handlePrev()
             }}
-            className="w-full flex-1 flex flex-col lg:flex-row min-h-[calc(100vh-52px)]"
+            className="w-full flex-1 flex flex-col lg:flex-row items-center min-h-[calc(100vh-52px)] px-6 sm:px-10 lg:px-16 py-8"
           >
-            {/* Columna Izquierda: Información de Anuncio ocupando toda la pantalla */}
-            <div className="w-full lg:w-[55%] bg-[#EFE6D5] flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 xl:p-20 min-h-[55vh] lg:min-h-[calc(100vh-52px)]">
-              {/* Barra Superior con Insignia, Contador y Botón de Resumen */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            {/* Columna Izquierda: Información del Anuncio */}
+            <div className="w-full lg:w-[50%] flex flex-col justify-between space-y-8 pr-0 lg:pr-8 min-h-[50vh] lg:min-h-[calc(100vh-120px)]">
+              {/* Barra de Encabezado Superior de la Columna Izquierda */}
+              <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div
-                    className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs md:text-sm font-medium tracking-[0.18em] uppercase ${getCategoryBadgeColor(
-                      currentItem.category
-                    )}`}
-                  >
+                  {/* Insignia Píldora idéntica a la imagen de referencia */}
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-xs font-semibold tracking-[0.2em] uppercase text-emerald-300">
                     {getCategoryIcon(currentItem.category)}
                     <span>{currentItem.category || "ANUNCIO"}</span>
                   </div>
@@ -213,33 +173,29 @@ export function AnnouncementCarousel({
 
                 <button
                   onClick={() => setShowSummary(true)}
-                  className="px-4 py-2 bg-white/80 border border-[#E3D5C1] rounded-2xl text-xs font-bold tracking-[0.15em] text-stone-800 uppercase hover:bg-white transition-all shadow-xs flex items-center gap-2 cursor-pointer"
+                  className="px-4 py-2 border border-white/20 bg-white/5 hover:bg-white/10 rounded-full text-xs font-semibold tracking-[0.15em] text-white uppercase transition-all shadow-xs flex items-center gap-2 cursor-pointer"
                 >
-                  <ClipboardList className="w-4 h-4 text-emerald-700" />
+                  <ClipboardList className="w-4 h-4 text-emerald-400" />
                   <span>Ver Resumen</span>
                 </button>
               </div>
 
               {/* Centro: Título, Persona, Versículo y Botones */}
-              <div className="flex-1 flex flex-col justify-center space-y-6 md:space-y-8 my-4">
-                {/* Título Principal */}
-                <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-stone-800 tracking-tight leading-[0.95]">
+              <div className="flex-1 flex flex-col justify-center space-y-6 my-auto">
+                {/* Título Principal de la Imagen */}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.05]">
                   {currentItem.title}
                 </h2>
 
                 {/* Encargado / Personas */}
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs md:text-sm tracking-[0.25em] text-stone-500 uppercase block mb-1.5 font-medium">
+                    <span className="text-xs md:text-sm tracking-[0.25em] text-stone-400 uppercase block mb-1.5 font-medium">
                       {currentItem.personLabel || "Encargado(a)"}
                     </span>
                     {currentItem.category === "Sermón" ? (
                       <div className="space-y-3">
-                        <p
-                          className={`text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide ${getCategoryColor(
-                            currentItem.category
-                          )}`}
-                        >
+                        <p className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide text-emerald-300">
                           {currentItem.person}
                         </p>
                         {currentItem.companions && currentItem.companions.length > 0 && (
@@ -251,7 +207,7 @@ export function AnnouncementCarousel({
                               {currentItem.companions.map((comp, i) => (
                                 <span
                                   key={i}
-                                  className="px-3.5 py-1 bg-white/80 border border-[#E3D5C1] rounded-full text-xs md:text-sm font-semibold text-stone-700 shadow-xs"
+                                  className="px-3.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs md:text-sm font-semibold text-stone-200"
                                 >
                                   {comp}
                                 </span>
@@ -265,9 +221,7 @@ export function AnnouncementCarousel({
                         {currentItem.persons.map((person, i) => (
                           <p
                             key={i}
-                            className={`text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide ${getCategoryColor(
-                              currentItem.category
-                            )}`}
+                            className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide text-emerald-300"
                           >
                             {person}
                             {i < currentItem.persons!.length - 1 ? "," : ""}
@@ -275,11 +229,7 @@ export function AnnouncementCarousel({
                         ))}
                       </div>
                     ) : (
-                      <p
-                        className={`text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide ${getCategoryColor(
-                          currentItem.category
-                        )}`}
-                      >
+                      <p className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide text-emerald-300">
                         {Array.isArray(currentItem.person)
                           ? currentItem.person.join(", ")
                           : currentItem.person || "Por asignar"}
@@ -289,8 +239,8 @@ export function AnnouncementCarousel({
 
                   {/* Versículo / Cita Bíblica */}
                   {currentItem.verse && (
-                    <div className="pt-6 border-t border-[#E3D5C1] max-w-2xl">
-                      <p className="text-stone-600 italic text-base md:text-lg leading-relaxed">
+                    <div className="pt-6 border-t border-white/15 max-w-xl">
+                      <p className="text-stone-300 italic text-base md:text-lg leading-relaxed">
                         "{currentItem.verse}"
                       </p>
                       {currentItem.reference && (
@@ -302,18 +252,18 @@ export function AnnouncementCarousel({
                   )}
                 </div>
 
-                {/* Controles de Navegación del Carrusel (Flechas + Compartir) */}
+                {/* Botones de Acción (Estilo cápsula y botones circulares) */}
                 <div className="flex flex-wrap items-center gap-3 pt-4">
                   <button
                     onClick={handlePrev}
-                    className="p-3.5 bg-white border border-[#E3D5C1] rounded-full text-stone-700 hover:bg-stone-100 transition-colors shadow-sm cursor-pointer"
+                    className="p-3.5 border border-white/20 bg-white/5 hover:bg-white/15 rounded-full text-white transition-colors cursor-pointer"
                     aria-label="Anuncio Anterior"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="p-3.5 bg-white border border-[#E3D5C1] rounded-full text-stone-700 hover:bg-stone-100 transition-colors shadow-sm cursor-pointer"
+                    className="p-3.5 border border-white/20 bg-white/5 hover:bg-white/15 rounded-full text-white transition-colors cursor-pointer"
                     aria-label="Anuncio Siguiente"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -321,7 +271,7 @@ export function AnnouncementCarousel({
 
                   <button
                     onClick={handleCopyToWhatsApp}
-                    className="px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-full text-xs md:text-sm font-bold tracking-widest uppercase flex items-center gap-2.5 shadow-sm transition-all cursor-pointer"
+                    className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase flex items-center gap-2.5 shadow-md transition-all cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -338,47 +288,47 @@ export function AnnouncementCarousel({
                 </div>
               </div>
 
-              {/* Tira de Pie de la Columna Izquierda con Avatares */}
-              <div className="pt-6 border-t border-[#E3D5C1] flex items-center gap-3">
+              {/* Tira del Pie de Columna con Avatares */}
+              <div className="pt-6 border-t border-white/15 flex items-center gap-3">
                 <div className="flex -space-x-2 overflow-hidden">
-                  <div className="inline-block h-8 w-8 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center ring-2 ring-white">
+                  <div className="inline-block h-8 w-8 rounded-full bg-emerald-700 text-white font-bold text-xs flex items-center justify-center ring-2 ring-[#0B2519]">
                     JA
                   </div>
-                  <div className="inline-block h-8 w-8 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center ring-2 ring-white">
+                  <div className="inline-block h-8 w-8 rounded-full bg-indigo-700 text-white font-bold text-xs flex items-center justify-center ring-2 ring-[#0B2519]">
                     IASD
                   </div>
-                  <div className="inline-block h-8 w-8 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center ring-2 ring-white">
+                  <div className="inline-block h-8 w-8 rounded-full bg-amber-700 text-white font-bold text-xs flex items-center justify-center ring-2 ring-[#0B2519]">
                     ✝
                   </div>
                 </div>
-                <p className="text-xs text-stone-500 font-medium">
+                <p className="text-xs text-stone-300 font-normal leading-tight">
                   Guiamos cada servicio con dedicación y fe.
                 </p>
               </div>
             </div>
 
-            {/* Columna Derecha: Fotografía a Pantalla Completa (Full Bleed Image) */}
-            <div className="w-full lg:w-[45%] relative min-h-[45vh] lg:min-h-[calc(100vh-52px)] bg-stone-300">
-              <Image
-                src={currentItem.image || "/placeholder.svg"}
-                alt={currentItem.title || "Anuncio"}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                priority
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent p-6 text-white text-center">
-                <p className="text-xs tracking-[0.25em] font-medium uppercase text-stone-200">
-                  Tu Fe, Nuestra Misión • IASD
-                </p>
+            {/* Columna Derecha: Fotografía Enmarcada con esquinas redondeadas (idéntica a la imagen de referencia) */}
+            <div className="w-full lg:w-[50%] flex flex-col items-center justify-center pt-8 lg:pt-0">
+              <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[480px] xl:h-[540px] rounded-2xl lg:rounded-[28px] overflow-hidden shadow-2xl border border-white/15 bg-stone-900">
+                <Image
+                  src={currentItem.image || "/placeholder.svg"}
+                  alt={currentItem.title || "Anuncio"}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
+              <span className="text-[11px] tracking-[0.25em] text-stone-400 uppercase font-medium mt-3 text-center">
+                Tu Fe, Nuestra Misión • IASD
+              </span>
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Indicadores de Puntos (Dots) Flotantes al Pie de Pantalla */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-[#E3D5C1] shadow-sm">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 bg-stone-900/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-md">
         {announcements.map((_, idx) => (
           <button
             key={idx}
@@ -388,8 +338,8 @@ export function AnnouncementCarousel({
             }}
             className={`h-2.5 transition-all duration-300 rounded-full cursor-pointer ${
               idx === currentIndex
-                ? "w-7 bg-emerald-700"
-                : "w-2.5 bg-[#E3D5C1] hover:bg-stone-500"
+                ? "w-7 bg-emerald-400"
+                : "w-2.5 bg-white/30 hover:bg-white/60"
             }`}
             aria-label={`Ir a diapositiva ${idx + 1}`}
           />
@@ -403,7 +353,7 @@ export function AnnouncementCarousel({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-stone-900/40 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
             onClick={() => setShowSummary(false)}
           >
             <motion.div
@@ -411,23 +361,23 @@ export function AnnouncementCarousel({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#FAF7F2] border border-[#E3D5C1] rounded-[2rem] shadow-2xl p-6 md:p-12 relative"
+              className="w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0D2E1F] border border-white/20 rounded-[2rem] shadow-2xl p-6 md:p-12 relative text-white"
             >
               <button
                 onClick={() => setShowSummary(false)}
-                className="absolute top-6 right-6 p-2 rounded-full hover:bg-stone-200 transition-colors cursor-pointer"
+                className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Cerrar resumen"
               >
-                <X className="w-6 h-6 text-stone-500" />
+                <X className="w-6 h-6 text-stone-300" />
               </button>
 
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 pb-6 border-b border-[#E3D5C1] gap-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 pb-6 border-b border-white/15 gap-6">
                 <div>
-                  <h2 className="text-2xl md:text-4xl font-light text-stone-800 tracking-tight flex items-center gap-3">
-                    <ClipboardList className="w-8 h-8 text-emerald-700" />
+                  <h2 className="text-2xl md:text-4xl font-light text-white tracking-tight flex items-center gap-3">
+                    <ClipboardList className="w-8 h-8 text-emerald-400" />
                     Resumen de Privilegios
                   </h2>
-                  <p className="text-stone-500 mt-2 text-sm tracking-wide">{weekLabel}</p>
+                  <p className="text-stone-300 mt-2 text-sm tracking-wide">{weekLabel}</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -436,7 +386,7 @@ export function AnnouncementCarousel({
                     className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-sm cursor-pointer ${
                       copied
                         ? "bg-emerald-600 text-white"
-                        : "bg-white text-emerald-700 border border-[#E3D5C1] hover:bg-emerald-50"
+                        : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
                     }`}
                   >
                     {copied ? (
@@ -458,16 +408,16 @@ export function AnnouncementCarousel({
                 {announcements.map((item) => (
                   <div
                     key={`summary-${item.id}`}
-                    className="flex items-start gap-4 p-3.5 rounded-xl bg-white/70 border border-[#E3D5C1]/70"
+                    className="flex items-start gap-4 p-3.5 rounded-xl bg-white/5 border border-white/10"
                   >
-                    <div className="p-2.5 bg-white border border-[#E3D5C1] rounded-lg shadow-sm">
+                    <div className="p-2.5 bg-white/10 border border-white/20 rounded-lg shadow-sm">
                       {getCategoryIcon(item.category)}
                     </div>
                     <div>
-                      <h3 className="text-xs tracking-wider text-stone-500 uppercase font-medium mb-1">
+                      <h3 className="text-xs tracking-wider text-stone-300 uppercase font-medium mb-1">
                         {item.category}
                       </h3>
-                      <p className={`text-base font-bold tracking-wide ${getCategoryColor(item.category)}`}>
+                      <p className="text-base font-bold tracking-wide text-emerald-300">
                         {item.category === "Sermón"
                           ? item.person
                           : item.persons && item.persons.length > 0
