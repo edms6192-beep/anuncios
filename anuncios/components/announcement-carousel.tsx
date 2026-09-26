@@ -174,7 +174,7 @@ export function AnnouncementCarousel({
   }
 
   return (
-    <div className="bg-[#EFE6D5] pt-[280px] md:pt-[240px] pb-16 px-4 md:px-8 lg:px-12 flex flex-col items-center">
+    <div className="bg-[#EFE6D5] pt-[100px] md:pt-[120px] pb-16 px-4 md:px-8 lg:px-12 flex flex-col items-center">
       {/* Botón Superior para ver resumen general */}
       <div className="w-full max-w-6xl mb-6 flex items-center justify-between">
         <button

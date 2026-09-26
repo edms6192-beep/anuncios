@@ -21,7 +21,7 @@ export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
   }
 
   return (
-    <div className="bg-[#EFE6D5] pt-[280px] md:pt-[240px] pb-16 px-4 md:px-8 lg:px-12 flex justify-center">
+    <div className="bg-[#EFE6D5] pt-[100px] md:pt-[120px] pb-16 px-4 md:px-8 lg:px-12 flex justify-center">
       <div className="w-full max-w-6xl bg-[#FAF7F2] border border-[#E3D5C1] rounded-[2.5rem] md:rounded-[3rem] shadow-xl p-6 md:p-10 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Columna Izquierda */}
