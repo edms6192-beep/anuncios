@@ -32,7 +32,7 @@ export function WednesdayPrayer({ data }: WednesdayPrayerProps) {
         </div>
 
         <div className="space-y-6 my-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.05] font-brunson">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white tracking-[0.06em] leading-[1.15] mb-6 md:mb-8 font-brunson">
             Cultura de Oración y Fe
           </h2>
 

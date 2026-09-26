@@ -39,8 +39,8 @@ export function JaProgram() {
           <div className="inline-flex items-center justify-center p-4 bg-emerald-800 rounded-full mb-4 shadow-xl shadow-emerald-900/20">
             <Star className="w-10 h-10 text-emerald-100 fill-emerald-100" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight font-brunson">
-            ROL DE PROGRAMACIÓN <span className="font-bold text-emerald-400">JA</span>
+          <h2 className="text-3xl md:text-5xl font-normal text-white tracking-[0.06em] leading-[1.15] font-brunson">
+            ROL DE PROGRAMACIÓN <span className="font-bold text-emerald-400 font-sans">JA</span>
           </h2>
           <p className="text-stone-500 tracking-[0.2em] uppercase text-sm md:text-base font-medium">
             Abril – Mayo – Junio 2026
